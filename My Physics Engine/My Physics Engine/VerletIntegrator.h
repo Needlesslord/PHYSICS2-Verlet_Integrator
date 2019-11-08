@@ -2,6 +2,8 @@
 
 class VerletIntegrator
 {
+public:
+
 	struct Object
 	{
 		int x;
@@ -12,7 +14,6 @@ class VerletIntegrator
 		int ay;
 	};
 
-public:
 
 	//Constructor
 	VerletIntegrator();

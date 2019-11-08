@@ -2,6 +2,7 @@
 
 VerletIntegrator::Object VerletIntegrator::Integrate(Object obj, int dt)
 {
-
-	return { 0, 0, 0 };
+	obj.x = obj.x + obj.vx*dt + (obj.ax / 2)*dt*dt;
+	obj.vx = obj.vx + obj.ax*dt;
+	return obj;
 }
