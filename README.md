@@ -43,7 +43,9 @@ _under construction_
 ## Installation
 
 Download the .zip (which can be found in our Github Project -link below- in releases and in our github wewb page).
+
 Go to the file "My Physics Engine" and click "Verlet_Integrator.exe"
+
 Enjoy!
 
 
@@ -89,16 +91,18 @@ Enjoy!
 ## Credits:
 
 Design and Development: 
-	Tomás Carreras
-	Núria Lamonja
 
-
-We have taken code with permission from our collegues:
-	
-	Pol Casaú and Xavi Marín developing ["Thalassa"](https://github.com/xavimarin35/Thalassa). (Find the commit we took [here!](https://github.com/xavimarin35/Thalassa/tree/7cfb7e09fb4b7088d2c26a71125b6eb57c845073))
-
-	Eric-G. Durán and Alex Lopex developing ["Angel Falls"](https://github.com/EnricGDV/Game_Development_Platformer). (Find the commit we took [here!](https://github.com/EnricGDV/Game_Development_Platformer/tree/b9a577e1ea92afc45792edbb4a5602b030f33ef1))
-
+		Tomás Carreras
+		
+		Enric-G. Durán
+		
+		Núria Lamonja
+		
+		Alex Lopez
+		
+		Raul Morente
+		
+		Albert Robles
 
 
 ***
@@ -162,6 +166,7 @@ CONTROLS:
 ## Disclosure
 
 This is an integrator made by second year students of the Videogame Design and Development degree taught at CITM.
+
 The integrator has been made using C++, using SDL and pugi libraries.
 
 
@@ -192,6 +197,7 @@ Copyright (c) [2019] [Tomás Carreras, Enric-G. Durán, Núria Lamonja, Alex Lop
 
 All rights reserved to the developers and publishers of the original release (Tomás Carreras, Enric-G. Durán, Núria Lamonja, Alex Lopez, Raul Morente, Albert Robles). 
 The aim of this project (link to the github project can be found above) and respectively wiki is only educational. 
+
 The content can only be used for non-commercial purposes. 
 
 The copyright of the music and art is used for non-commercial projects and educational purposes.
