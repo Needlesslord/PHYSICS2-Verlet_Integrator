@@ -3,6 +3,14 @@
 
 #include "j1Module.h"
 
+struct data_xvadt
+{
+	int x;
+	int v;
+	int a;
+	int t;
+};
+
 class VerletIntegrator : public j1Module
 {
 public:
@@ -17,7 +25,6 @@ public:
 		int ay;
 	};
 
-
 	//Constructor
 	VerletIntegrator();
 
@@ -26,6 +33,9 @@ public:
 
 	// Integration function
 	Object Integrate(Object obj, int dt);
+	data_xvadt NewtonsLawsMRUA(int xo, int vo, int ao, int dt);		//to call only at the end
+	data_xvadt NewtonsLawsMRUAdt(int xo, int vo, int ao, int dt, int t);	//to call frame x frame
+
 
 };
 

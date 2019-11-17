@@ -21,7 +21,9 @@
 
 ## Verlet Integrator: A quick summary
 
-_under construction_
+ - Verlet Integration is a numerical method used to integrate Newton’s equations of motion. It is frequently used to calculate trajectories of particles in molecular dynamics simulations and computer graphics. (https://en.wikipedia.org/wiki/Verlet_integration)
+
+ - The Verlet integrator provides good numerical stability, as well as other properties that are important in physical systems such as time reversibility and preservation of the symplectic form on phase space, at no significant additional computational cost over the simple Euler method. (https://en.wikipedia.org/wiki/Verlet_integration)
 
 
 
@@ -45,7 +47,7 @@ _under construction_
 
 Download the .zip (which can be found in our Github Project -link below- in releases and in our github wewb page).
 
-Go to the file "My Physics Engine" and click "Verlet_Integrator.exe"
+Go to the folder "Verlet Integrator" and click "Verlet_Integrator.exe"
 
 Enjoy!
 
@@ -67,7 +69,7 @@ Enjoy!
 
 	GitHub: EnricGDV
 
-**Management and progammer:** Núria Lamonja
+**Management, design and progammer:** Núria Lamonja
 
 	GitHub:	 needlesslord
 
@@ -156,7 +158,14 @@ CONTROLS:
 
 ## Content
 
-	_under construction_
+In this integrator you have two main functions:
+
+	1) You can test the integrator, in which case the first and last 20 frames will be displayed on the screen after the input of the initial data.
+
+	2) You can use the integrator, in which case you can see the final numeric data or a graphic representation of the data inputted before. 
+
+		The graphic representation can be paused, showing on the screen the data of the moment
+		The numeric data of the integrator can be compared to the numeric data from Newton's Laws.
 
 
 

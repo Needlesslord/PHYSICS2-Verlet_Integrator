@@ -6,25 +6,63 @@ int main()
 	//VerletIntegrator::Object object1;
 	//object1.vx = 5;
 	//object1.x = 5;
-	//float xi = 0.0;
-	//float vi = 5.0;
-	float v = 1.0;
-	float a = 1.0;
-	float x = 0.0;
-	float fr = 30.0;
-	float dt = 0.0;
+	Object sphere;
 
-	for (int numF = 0; numF < 60; numF++)
+	sphere.x = 0.0;
+	sphere.y = 4000.0;
+	sphere.vx = 0.0;
+	sphere.vy = 0.0;
+	sphere.ax = 0.0;
+	sphere.ay = gravity;
+	sphere.radius = 1.0;
+	sphere.area = sphere.radius * sphere.radius * 3.14159265359;
+	sphere.mass = 1000.0;
+
+	Forces sphere_forces;
+
+	double new_x = sphere.x;
+	double new_y = sphere.y;
+	double new_vx = sphere.vx;
+	double new_vy = sphere.vy;
+	double new_ax = sphere.ax;
+	double new_ay = sphere.ay;
+
+	for (int t = 0; t < 60; t++)
 	{
 		//calculate the dt: time between frames
 		dt = 1.0f / fr;							//1 --> int, 1.0 --> float
 
 		//VerletIntegrator::Integrate(object1, 1);
 
-
 		x = x + v * dt + (a * 0.5f)*(dt*dt);		// 0.5 better than 1/2
 		v = v + a * dt;
 		std::cout << "x: " << x << "  v: " << v << "  a: " << a << "  frame: " << numF << std::endl;
+
+		//Y
+
+		sphere_forces.y = 0.5 * AIR_DENSITY * new_vy * new_vy * sphere.area * sphere.CD;
+
+		new_ay = sphere_forces.y / sphere.mass + gravity;
+
+		new_y = sphere.y + new_vy * t + (new_ay / 2) * t * t;
+		new_vy = sphere.vy + new_ay * t;
+
+
+		//X
+
+		sphere_forces.x = 0.5 * AIR_DENSITY * new_vx * new_vx * sphere.area * sphere.CD;
+
+		new_ax = sphere_forces.x / sphere.mass;
+
+
+		new_x = sphere.x + new_vx * t + (new_ax / 2) * t * t;
+		new_vx = sphere.vx + new_ax * t;
+
+		if (new_y <= 0)
+			break;
+
+		std::cout << "x: " << new_x << "  vx: " << new_vx << "  ax: " << new_ax << std::endl;
+		std::cout << "y: " << new_y << "  vy: " << new_vy << "  ay: " << new_ay << std::endl << std::endl;
 	}
 
 	system("pause");
