@@ -16,7 +16,7 @@ struct Object
 	//Aerodynamics //SPHERE
 	double radius;
 	double area;
-	double CD = 0.47;; //Coeficiente Aerodinámico de resistencia
+	double CD = 0.47; //Coeficiente Aerodinámico de resistencia
 	double mass;
 };
 
