@@ -34,6 +34,9 @@
     <ClCompile Include="VerletIntegrator.cpp">
       <Filter>Desenvolupament  ========\Modules</Filter>
     </ClCompile>
+    <ClCompile Include="ModuleFadeToBlack.cpp">
+      <Filter>Desenvolupament  ========\Modules</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="j1Window.h">
@@ -86,6 +89,12 @@
     </ClInclude>
     <ClInclude Include="VerletIntegrator.h">
       <Filter>Desenvolupament  ========\Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleFadeToBlack.h">
+      <Filter>Desenvolupament  ========\Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="Globals.h">
+      <Filter>Desenvolupament  ========</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
