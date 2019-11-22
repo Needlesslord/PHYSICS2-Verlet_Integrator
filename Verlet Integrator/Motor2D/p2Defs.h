@@ -58,7 +58,7 @@ template <class VALUE_TYPE> void SWAP(VALUE_TYPE& a, VALUE_TYPE& b)
 #define BORDERLESS false
 #define RESIZABLE true
 #define FULLSCREEN_WINDOW false
-#define TITLE "< -- Replacement Title -- >"
+#define TITLE "Verlet Integrator"
 #define WIDTH 1024
 #define HEIGHT 768
 #define SCALE 1
