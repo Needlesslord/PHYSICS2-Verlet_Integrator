@@ -14,6 +14,7 @@ class j1Audio;
 class j1Scene;
 class VerletIntegrator;
 class ModuleFadeToBlack;
+class ModuleFonts;
 
 class j1App
 {
@@ -72,6 +73,7 @@ public:
 	j1Scene*			scene;
 	VerletIntegrator*   physics;
 	ModuleFadeToBlack*  fade;
+	ModuleFonts*		fonts;
 
 
 private:

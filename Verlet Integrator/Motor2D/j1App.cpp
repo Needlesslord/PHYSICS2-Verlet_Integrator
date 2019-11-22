@@ -9,7 +9,7 @@
 #include "j1Scene.h"
 #include "j1App.h"
 #include "VerletIntegrator.h"
-#include "ModuleFadeToBlack.h"
+#include "ModuleFonts.h"
 
 // Constructor
 j1App::j1App(int argc, char* args[]) : argc(argc), args(args)
@@ -23,7 +23,7 @@ j1App::j1App(int argc, char* args[]) : argc(argc), args(args)
 	audio = new j1Audio();
 	scene = new j1Scene();
 	physics = new VerletIntegrator();
-	fade = new ModuleFadeToBlack();
+	fonts = new ModuleFonts();
 
 	// Ordered for awake / Start / Update
 	// Reverse order of CleanUp
@@ -33,7 +33,7 @@ j1App::j1App(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(audio);
 	AddModule(scene);
 	AddModule(physics);
-	AddModule(fade);
+	AddModule(fonts);
 
 	// render last to swap buffer
 	AddModule(render);
