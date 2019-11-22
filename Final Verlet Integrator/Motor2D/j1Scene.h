@@ -2,7 +2,7 @@
 #define __j1SCENE_H__
 
 #include "j1Module.h"
-
+#include"VerletIntegrator.h"
 struct SDL_Texture;
 
 class j1Scene : public j1Module
@@ -32,8 +32,12 @@ public:
 	// Called before quitting
 	bool CleanUp();
 
+	int step;
+	SDL_Rect ball;
+
 private:
 	SDL_Texture* img;
+	SDL_Texture* ball_tex;
 };
 
 #endif // __j1SCENE_H__

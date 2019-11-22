@@ -7,6 +7,9 @@
 #include "j1Render.h"
 #include "j1Window.h"
 #include "j1Scene.h"
+#include "VerletIntegrator.h"
+
+object Ball;
 
 j1Scene::j1Scene() : j1Module()
 {
@@ -22,7 +25,6 @@ bool j1Scene::Awake()
 {
 	LOG("Loading Scene");
 	bool ret = true;
-
 	return ret;
 }
 
@@ -30,24 +32,37 @@ bool j1Scene::Awake()
 bool j1Scene::Start()
 {
 	img = App->tex->Load("textures/0-0_Welcome.png");
-	App->audio->PlayMusic("audio/music/music_sadpiano.ogg");
+	ball_tex = App->tex->Load("textures/ball.png");
+
+	ball.x = 0;
+	ball.y = 0;
+	ball.w = 64;
+	ball.h = 64;
+
+	step = 0;
 	return true;
 }
 
 // Called each loop iteration
 bool j1Scene::PreUpdate()
 {
-
 	return true;
 }
 
 // Called each loop iteration
 bool j1Scene::Update(float dt)
 {
+	if (step == 0)
 	App->render->Blit(img, 0, 0);
-	if (App->input->GetKeyDown(SDLK_SPACE) == true)
+
+	if (App->input->GetKeyDown(SDLK_SPACE) && step == 0)
 	{
-		//App->render->Blit()
+		step++;
+		Ball.enterData();
+	}
+	else if (step == 1)
+	{
+		App->render->Blit(ball_tex, ball.x, ball.y);
 	}
 	return true;
 }
@@ -56,10 +71,8 @@ bool j1Scene::Update(float dt)
 bool j1Scene::PostUpdate()
 {
 	bool ret = true;
-
-	if(App->input->GetKeyDown(SDLK_ESCAPE) == true)
+	if (App->input->GetKeyDown(SDLK_ESCAPE))
 		ret = false;
-
 	return ret;
 }
 
@@ -67,6 +80,7 @@ bool j1Scene::PostUpdate()
 bool j1Scene::CleanUp()
 {
 	LOG("Freeing scene");
-
+	App->tex->UnLoad(img);
+	App->tex->UnLoad(ball_tex);
 	return true;
 }
