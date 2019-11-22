@@ -159,10 +159,10 @@ double object::getFY()
 
 double object::distanceTo(object _object)
 {
-	double distanceX = abs(x - _object.x);
-	double distanceY = abs(y - _object.y);
+	double distanceX = abs(new_x - _object.x);
+	double distanceY = abs(new_y - _object.y);
 
-	double distance = sqrt(distanceX * distanceX + distanceY * distanceY);
+	double distance = sqrt(pow(distanceX, 2) + pow(distanceY, 2));
 
 	return distance;
 }
@@ -180,56 +180,89 @@ void object::update(double time, object _object, double CR)
 	unsigned int second = 0;
 	unsigned int frame = 0;
 	unsigned int secondFrame = 0;
+	bool checkCollisionAgain = true;
 
-	for (double t = 0.0; t < time - 1.0 / 60.0; t = t + 1.0 / 60.0)
+	new_x = x;
+	new_y = y;
+	new_vx = vx;
+	new_vy = vy;
+
+
+	for (frame = 0; frame < time * fps; frame++)
 	{
+		dt = 1.0 / fps;
+
 		//X
 
+		//Updating previous frame variables
+		x = new_x;
+		vx = new_vx;
+
+		//Forces
 		fx = 0.5 * AIR_DENSITY * new_vx * new_vx * area * CD;
 
+		//Acceleration
 		if (new_vx <= 0.0)
 			new_ax = fx / mass;
 		else
 			new_ax = -fx / mass;
 
-		new_x = x + new_vx * t + (new_ax / 2.0) * t * t;
-		new_vx = vx + new_ax * t;
+		//Velocity
+		new_vx = vx + new_ax * dt;
+
+		//Position
+		new_x = x + vx * dt + (new_ax / 2.0) * dt * dt;
 
 
 		//Y
 
+		//Updating previous frame variables
+		y = new_y;
+		vy = new_vy;
+
+		//Forces
 		fy = 0.5 * AIR_DENSITY * new_vy * new_vy * area * CD;
 
-		if (new_vy <= 0.0 && new_y > 0.0)
+		//Acceleration
+		if (new_vy <= 0.0)
 			new_ay = fy / mass + GRAVITY;
-		else if (new_vy > 0.0 && new_y > 0.0)
+		else if (new_vy > 0.0)
 			new_ay = -fy / mass + GRAVITY;
-		else if (new_vy <= 0.0 && new_y <= 0.0)
-			new_ay = fy / mass;
-		else
-			new_ay = -fy / mass;
 
-		new_y = y + new_vy * t + (new_ay / 2.0) * t * t;
-		new_vy = vy + new_ay * t;
+		//Velocity
+		new_vy = vy + new_ay * dt;
 
-		if (new_y < 0.0)
-			new_y = 0.0;
+		//Position
+		new_y = y + vy * dt + (new_ay / 2.0) * dt * dt;
+
+
+
+		//Solving ground collision
+		if (new_y < radius)
+		{
+			new_y = radius;
+			new_vy = 0.0;
+		}
 
 
 		//Collision
 
-		if (checkCollission(_object) == true)
+		if (checkCollission(_object) == true && checkCollisionAgain == true)
 		{
 			std::cout << "Collision!" << std::endl;
-			new_vx = (((CR * _object.mass * (_object.vx - new_vx)) + (mass * new_vx + _object.mass * _object.vx)) / (mass + _object.mass));
-			new_vy = (((CR * _object.mass * (_object.vy - new_vy)) + (mass * new_vy + _object.mass * _object.vy)) / (mass + _object.mass));
+			new_vx = ((CR * _object.mass * (_object.vx - new_vx) + mass * new_vx + _object.mass * _object.vx) / (mass + _object.mass));
+			new_vy = ((CR * _object.mass * (_object.vy - new_vy) + mass * new_vy + _object.mass * _object.vy) / (mass + _object.mass));
+
+			checkCollisionAgain = false;
 		}
+
+		if (distanceTo(_object) > radius + _object.radius)
+			checkCollisionAgain = true;
 
 		//Results
 
-		frame++;
 		secondFrame++;
-		if ((frame - 1) % 60 == 0)
+		if ((frame - 1) % (int)fps == 0)
 			second++, secondFrame = 0;
 
 		if (frame == 1)
@@ -243,6 +276,7 @@ void object::update(double time, object _object, double CR)
 			std::cout << "Second: " << second - 1 << "   Frame: " << secondFrame + 1 << "   Total Frame: " << frame << std::endl;
 			std::cout << "x: " << new_x << "  vx: " << new_vx << "  ax: " << new_ax << std::endl;
 			std::cout << "y: " << new_y << "  vy: " << new_vy << "  ay: " << new_ay << std::endl << std::endl;
+			std::cout << "distance to obect: " << distanceTo(_object) << std::endl;
 		}
 	}
 
