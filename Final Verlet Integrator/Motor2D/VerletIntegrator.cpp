@@ -296,7 +296,6 @@ void object::update(double time, object _object, double CR)
 			std::cout << "distance to obect: " << distanceTo(_object) << std::endl;
 		}
 	}
-
 }
 
 

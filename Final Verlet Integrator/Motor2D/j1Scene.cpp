@@ -33,6 +33,7 @@ bool j1Scene::Start()
 {
 	img = App->tex->Load("textures/0-0_Welcome.png");
 	ball_tex = App->tex->Load("textures/ball.png");
+	Ball.enterData();
 
 	ball.x = 0;
 	ball.y = 0;
@@ -60,8 +61,9 @@ bool j1Scene::Update(float dt)
 		step++;
 		Ball.enterData();
 	}
-	else if (step == 1)
+	if (step == 1)
 	{
+		Ball.update(dt, Ball, 0);
 		App->render->Blit(ball_tex, ball.x, ball.y);
 	}
 	return true;
