@@ -29,7 +29,7 @@ bool j1Scene::Awake()
 // Called before the first frame
 bool j1Scene::Start()
 {
-	img = App->tex->Load("textures/test.png");
+	img = App->tex->Load("textures/0-0_Welcome.png");
 	App->audio->PlayMusic("audio/music/music_sadpiano.ogg");
 	return true;
 }
@@ -45,6 +45,10 @@ bool j1Scene::PreUpdate()
 bool j1Scene::Update(float dt)
 {
 	App->render->Blit(img, 0, 0);
+	if (App->input->GetKeyDown(SDLK_SPACE) == true)
+	{
+		//App->render->Blit()
+	}
 	return true;
 }
 
