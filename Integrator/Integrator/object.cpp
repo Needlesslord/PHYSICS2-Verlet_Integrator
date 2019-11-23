@@ -1,6 +1,16 @@
 #include "object.h"
 #include "globals.h"
 
+//////// VARIABLES LIST ////////
+/*
+
+dt = time between 2 frames
+
+
+*/
+
+
+
 //set
 
 void object::setX(double _x)
