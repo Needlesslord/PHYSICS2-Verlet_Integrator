@@ -85,7 +85,6 @@ void object::enterData()
 	std::cin >> y;
 	std::cout << std::endl;
 
-
 	//vx
 	std::cout << "Enter a value for initial X velocity (m/s): ";
 	std::cin >> vx;
@@ -243,7 +242,6 @@ void object::update(double time, object _object, double CR)
 		//Position
 		new_x = x + vx * dt + (new_ax / 2.0) * dt * dt;
 
-
 		//Y
 
 		//Updating previous frame variables
@@ -265,15 +263,12 @@ void object::update(double time, object _object, double CR)
 		//Position
 		new_y = y + vy * dt + (new_ay / 2.0) * dt * dt;
 
-
-
 		//Solving ground collision
 		if (new_y < radius)
 		{
 			new_y = radius;
 			new_vy = 0.0;
 		}
-
 
 		//Collision
 
@@ -301,14 +296,34 @@ void object::update(double time, object _object, double CR)
 			std::cout << "x: " << x << "  vx: " << vx << "  ax: " << ax << std::endl;
 			std::cout << "y: " << y << "  vy: " << vy << "  ay: " << ay << std::endl << std::endl;
 		}
-		/*else
+		else
 		{
 			std::cout << "Second: " << second - 1 << "   Frame: " << secondFrame + 1 << "   Total Frame: " << frame << std::endl;
 			std::cout << "x: " << new_x << "  vx: " << new_vx << "  ax: " << new_ax << std::endl;
 			std::cout << "y: " << new_y << "  vy: " << new_vy << "  ay: " << new_ay << std::endl << std::endl;
 			std::cout << "distance to obect: " << distanceTo(_object) << std::endl;
-		}*/
-		else system("pause");
+		}
+		/*else system("pause");*/
 	}
+}
 
+void object::NewtonsLawsMRUA()
+{
+
+	new_ax = fx / mass;
+
+	new_vx = vx + new_ax * dt;
+
+	new_x = x + vx * dt + (new_ax / 2.0) * dt * dt;
+
+	new_ay = fy / mass;
+
+	new_vy = vy + new_ay * dt;
+
+	new_y = y + vy * dt + (new_ay / 2.0) * dt * dt;
+
+	std::cout << "x: " << new_x << "  vx: " << new_vx << "  ax: " << new_ax << std::endl;
+	std::cout << "y: " << new_y << "  vy: " << new_vy << "  ay: " << new_ay << std::endl << std::endl;
+
+	system("pause");
 }

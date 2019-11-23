@@ -54,6 +54,8 @@ public:
 
 	void update(double time, object _object, double CR);
 
+	void NewtonsLawsMRUA();
+
 private:
 	//position
 	double x = 0.0;
