@@ -117,6 +117,24 @@ void object::enterData()
 	std::cin >> density;
 	std::cout << std::endl;
 	mass = volume * density;
+
+	//coefficient of friction
+	int i = 0;
+	while (i == 0) {
+		std::cout << "Enter a value for the coefficient of friction(value should range between 0 and 1): ";
+		std::cin >> CF;
+		std::cout << std::endl;
+		if (CF >= 0 && CF <= 1) {
+			df = CF * mass * GRAVITY;
+			i = 1;
+
+		}
+		else {
+			std::cout << "Wrong value introduced." << std::endl;
+			std::cout << std::endl;
+		}
+	}
+	
 }
 
 //get
@@ -229,6 +247,10 @@ void object::update(double time, object _object, double CR)
 
 		//Forces
 		fx = 0.5 * AIR_DENSITY * new_vx * new_vx * area * CD;
+
+		if (new_y == 0) {
+			fx += df;
+		}
 
 		//Acceleration
 		if (new_vx <= 0.0)

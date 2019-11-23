@@ -81,9 +81,15 @@ private:
 	//drag coefficient
 	double CD = 0.47;
 
+	//coefficient of friction
+	double CF = 0.0;
+
 	//forces
 	double fx = 0.0;
 	double fy = 0.0;
+
+	//drag force
+	double df = 0.0;
 
 	//updated data
 	double new_x;
