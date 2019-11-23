@@ -31,7 +31,7 @@ initial_fx= initial force on x axis
 initial_fy= initial force on y axis
 
 CF = coefficient of friction with the ground
-df = drag fiction of the object
+ff = friction force of the object
 
 
 bool checkCollision() compares two object positions, if their distance is less than the sum of their radius, returns true
@@ -143,7 +143,7 @@ void object::enterData()
 		std::cin >> CF;
 		std::cout << std::endl;
 		if (CF >= 0 && CF <= 1) {
-			df = CF * mass * GRAVITY;
+			ff = CF * mass * GRAVITY;
 			i = 1;
 
 		}
@@ -272,7 +272,7 @@ void object::update(double time, object _object, double CR)
 		}
 
 		if (new_y == 0) {
-			fx += df;
+			fx += ff;
 		}
 
 		//Acceleration

@@ -92,8 +92,8 @@ private:
 	double initial_fx = 0.0;
 	double initial_fy = 0.0;
 
-	//drag force
-	double df = 0.0;
+	//friction force
+	double ff = 0.0;
 
 	//updated data
 	double new_x;
