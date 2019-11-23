@@ -2,7 +2,6 @@
 
 
 ***
-***
 
 
 
@@ -131,7 +130,7 @@ Then again, we take into account that the acceleration may not be the same throu
 
 We  will use Newton's Laws to compare the results of the integrator with the "reality", as stated before. To compute the acceleration, the velocity and the position we will use the MRUA formulas:
 
-**new_ax = fx / mass
+**new_ax = fx / mass**
 
 	Where:
 	new_ax - the acceleration for this frame
@@ -159,10 +158,13 @@ We  will use Newton's Laws to compare the results of the integrator with the "re
 To compute the forces, the acceleration, the speed and the position for the y axis, we will use the formulas stated above as well, but taking into account the gravity, as said before.
 
 
-To see further information on where we took our information on what formulas to use from, please take a look at our "Data" folder in our GitHub repository (https://github.com/Needlesslord/Physics2theory) the following web pages:
-https://www.algorithm-archive.org/contents/verlet_integration/verlet_integration.html
-https://en.wikipedia.org/wiki/Verlet_integration
-https://www.gamedev.net/articles/programming/math-and-physics/a-verlet-based-approach-for-2d-game-physics-r2714
+To see further information on where we took our information on what formulas to use from, please take a look at our "Data" folder in our [GitHub repository](https://github.com/Needlesslord/Physics2theory) the following web pages:
+
+[Verlet Integration · GitBook](https://www.algorithm-archive.org/contents/verlet_integration/verlet_integration.html)
+
+[Wikipedia: Verlet Integration](https://en.wikipedia.org/wiki/Verlet_integration)
+
+[A Verlet based approach for 2D game physics](https://www.gamedev.net/articles/programming/math-and-physics/a-verlet-based-approach-for-2d-game-physics-r2714)
 
 
 
@@ -305,9 +307,9 @@ In each step, the user will receive instructions of what data or keys they shoul
 
 In this integrator you have two main functions:
 
-	1) You can test the integrator, in which case all the frames will be displayed on the screen after the input of the initial data.
+**1)** You can test the integrator, in which case all the frames will be displayed on the screen after the input of the initial data.
 
-	2) You can use the integrator, in which case you can see the final numeric data and/or a graphic representation of the data inputed before. 
+**2)** You can use the integrator, in which case you can see the final numeric data and/or a graphic representation of the data inputed before. 
 
 In the final results for both cases, it will also be displayed the results of calculating everything with the Newton's Laws.
 
