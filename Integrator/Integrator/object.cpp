@@ -72,9 +72,9 @@ void object::setAY(double _ay)
 	ay = _ay;
 }
 
-void object::setRadius(double _radius)
+void object::setEdgeLength(double _edgeLength)
 {
-	radius = _radius;
+	edge_length = _edgeLength;
 }
 
 void object::setDensity(double _density)
@@ -116,10 +116,10 @@ void object::enterData()
 
 	//radius
 	std::cout << "Enter a value for the sphere radius (m): ";
-	std::cin >> radius;
+	std::cin >> edge_length;
 	std::cout << std::endl;
-	area = radius * radius * 3.14159265359;
-	volume = 4.0 / 3.0 * 3.14159265359 * radius * radius * radius;
+	area = edge_length * edge_length;
+	volume = edge_length * edge_length * edge_length;
 
 	//density
 	std::cout << "Enter a value for the density of the object (kg/m^3): ";
@@ -189,7 +189,7 @@ double object::getAY()
 
 double object::getRadius()
 {
-	return radius;
+	return edge_length;
 }
 
 double object::getArea()
@@ -234,7 +234,10 @@ double object::distanceTo(object _object)
 
 bool object::checkCollission(object _object)
 {
-	if (distanceTo(_object) <= radius + _object.radius)
+	double distanceX = abs(new_x - _object.x);
+	double distanceY = abs(new_y - _object.y);
+
+	if (distanceX <= edge_length / 2 + _object.edge_length / 2 || distanceY <= edge_length / 2 + _object.edge_length)
 		return true;
 	else
 		return false;
@@ -314,9 +317,9 @@ void object::update(double time, object _object, double CR)
 		new_y = y + vy * dt + (new_ay / 2.0) * dt * dt;
 
 		//Solving ground collision
-		if (new_y < radius)
+		if (new_y < edge_length)
 		{
-			new_y = radius;
+			new_y = edge_length;
 			new_vy = 0.0;
 		}
 
@@ -325,14 +328,14 @@ void object::update(double time, object _object, double CR)
 		if (checkCollission(_object) == true && checkCollisionAgain == true)
 		{
 			std::cout << "Collision!" << std::endl;
-			new_vx = ((CR * _object.mass * (_object.vx - new_vx) + mass * new_vx + _object.mass * _object.vx) / (mass + _object.mass));
-			new_vy = ((CR * _object.mass * (_object.vy - new_vy) + mass * new_vy + _object.mass * _object.vy) / (mass + _object.mass));
+			//new_vx = ((CR * _object.mass * (_object.vx - new_vx) + mass * new_vx + _object.mass * _object.vx) / (mass + _object.mass));
+			//new_vy = ((CR * _object.mass * (_object.vy - new_vy) + mass * new_vy + _object.mass * _object.vy) / (mass + _object.mass));
 
-			checkCollisionAgain = false;
+			//checkCollisionAgain = false;
 		}
 
-		if (distanceTo(_object) > radius + _object.radius)
-			checkCollisionAgain = true;
+		//if (distanceTo(_object) > edge_length + _object.edge_length)
+			//checkCollisionAgain = true;
 
 		//Results
 

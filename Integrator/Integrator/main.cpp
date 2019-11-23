@@ -7,7 +7,7 @@ int main()
 	double time;
 	int newton;
 
-	object sphere;
+	object cube;
 	object obstacle;
 
 	//obstacle
@@ -21,13 +21,13 @@ int main()
 	obstacle.setDensity(HUGE_VAL);
 
 
-	sphere.enterData();
+	cube.enterData();
 
 	std::cout << "How many seconds will the simulation last? ";
 	std::cin >> time;
 	std::cout << std::endl;
 
-	sphere.update(time, obstacle, 1);
+	cube.update(time, obstacle, 1);
 
 	std::cout << std::endl;
 	std::cout << "Enter '1' if you want to compare the results with Newton's laws" << std::endl;
@@ -36,7 +36,7 @@ int main()
 
 	if (newton == 1)
 	{
-		sphere.NewtonsLawsMRUA();
+		cube.NewtonsLawsMRUA();
 	}
 	else
 	{

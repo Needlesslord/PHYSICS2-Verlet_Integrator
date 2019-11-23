@@ -16,7 +16,7 @@ public:
 
 	void setAY(double _ay);
 
-	void setRadius(double _radius);
+	void setEdgeLength(double _radius);
 
 	void setDensity(double _density);
 
@@ -70,16 +70,16 @@ private:
 	double ay = 0.0;
 
 	//object dimensions
-	double radius = 1.0;
-	double area = radius * radius * 3.14159265359;
-	double volume = 4.0 / 3.0 * 3.14159265359 * radius * radius * radius;
+	double edge_length = 1.0;
+	double area = edge_length * edge_length;
+	double volume = edge_length * edge_length * edge_length;
 
 	//mass
 	double density = 1000.0;
 	double mass = volume * density;
 
 	//drag coefficient
-	double CD = 0.47;
+	double CD = 1.05;
 
 	//coefficient of friction
 	double CF = 0.0;
