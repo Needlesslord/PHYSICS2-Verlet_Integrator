@@ -24,6 +24,12 @@ ax = initial ax, when used in a formula ax = previous frame x acceleration
 new_ay = value of ay in the current frame
 ay = initial ay, when used in a formula ay = previous frame a acceleration
 
+fx = resultant force on x axis
+fy = resultant force on y axis
+
+initial_fx= initial force on x axis
+initial_fy= initial force on y axis
+
 CF = coefficient of friction with the ground
 df = drag fiction of the object
 
@@ -120,6 +126,15 @@ void object::enterData()
 	std::cin >> density;
 	std::cout << std::endl;
 	mass = volume * density;
+
+	//initial force
+	std::cout << "Enter a value for the initial force of the object on the x axis (N): ";
+	std::cin >> initial_fx;
+	std::cout << std::endl;
+
+	std::cout << "Enter a value for the initial force of the object on the y axis (N): ";
+	std::cin >> initial_fy;
+	std::cout << std::endl;
 
 	//coefficient of friction
 	int i = 0;
@@ -250,6 +265,11 @@ void object::update(double time, object _object, double CR)
 
 		//Forces
 		fx = 0.5 * AIR_DENSITY * new_vx * new_vx * area * CD;
+		
+		if (initial_fx != 0) {
+			fx += initial_fx;
+			initial_fx = 0;
+		}
 
 		if (new_y == 0) {
 			fx += df;
@@ -275,6 +295,11 @@ void object::update(double time, object _object, double CR)
 
 		//Forces
 		fy = 0.5 * AIR_DENSITY * new_vy * new_vy * area * CD;
+
+		if (initial_fy != 0) {
+			fy += initial_fy;
+			initial_fy = 0;
+		}
 
 		//Acceleration
 		if (new_vy <= 0.0)

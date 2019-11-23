@@ -88,6 +88,10 @@ private:
 	double fx = 0.0;
 	double fy = 0.0;
 
+	//initial force
+	double initial_fx = 0.0;
+	double initial_fy = 0.0;
+
 	//drag force
 	double df = 0.0;
 
