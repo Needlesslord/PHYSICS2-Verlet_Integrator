@@ -45,7 +45,7 @@ public:
 	double getMass();
 
 	double getFX();
-	
+
 	double getFY();
 
 	double distanceTo(object _object);
@@ -77,7 +77,7 @@ private:
 	double mass = volume * density;
 
 	//drag coefficient
-	double CD = 0.47; 
+	double CD = 0.47;
 
 	//forces
 	double fx = 0.0;
@@ -92,4 +92,3 @@ private:
 	double new_ay;
 
 };
-
