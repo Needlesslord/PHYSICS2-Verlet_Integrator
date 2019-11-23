@@ -6,6 +6,26 @@
 
 dt = time between 2 frames
 
+new_x = value of x in the current frame
+x = initial x, when used in a formula x = previous frame x position
+
+new_y = value of y in the current frame
+y = initial y, when used in a formula y = previous frame y position
+
+new_vx = value of vx in the current frame
+vx = initial vx, when used in a formula vx = previous frame x velocity
+
+new_vy = value of vy in the current frame
+vy = initial vy, when used in a formula vy = previous frame y velocity
+
+new_ax = value of ax in the current frame
+ax = initial ax, when used in a formula ax = previous frame x acceleration
+
+new_ay = value of ay in the current frame
+ay = initial ay, when used in a formula ay = previous frame a acceleration
+
+
+bool checkCollision() compares two object positions, if their distance is less than the sum of their radius, returns true
 
 */
 
