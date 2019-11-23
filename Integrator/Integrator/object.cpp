@@ -24,6 +24,9 @@ ax = initial ax, when used in a formula ax = previous frame x acceleration
 new_ay = value of ay in the current frame
 ay = initial ay, when used in a formula ay = previous frame a acceleration
 
+CF = coefficient of friction with the ground
+df = drag fiction of the object
+
 
 bool checkCollision() compares two object positions, if their distance is less than the sum of their radius, returns true
 
