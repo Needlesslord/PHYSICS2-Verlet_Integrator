@@ -354,7 +354,7 @@ void object::update(double time, object _object, double CR)
 			std::cout << "Second: " << second - 1 << "   Frame: " << secondFrame + 1 << "   Total Frame: " << frame << std::endl;
 			std::cout << "x: " << new_x << "  vx: " << new_vx << "  ax: " << new_ax << std::endl;
 			std::cout << "y: " << new_y << "  vy: " << new_vy << "  ay: " << new_ay << std::endl << std::endl;
-			std::cout << "distance to obect: " << distanceTo(_object) << std::endl;
+			std::cout << "distance to object: " << distanceTo(_object) << std::endl;
 		}
 		/*else system("pause");*/
 	}

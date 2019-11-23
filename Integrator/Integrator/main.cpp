@@ -17,7 +17,7 @@ int main()
 	obstacle.setAY(0.0);
 	obstacle.setVX(0.0);
 	obstacle.setVY(0.0);
-	obstacle.setRadius(1.0);
+	//obstacle.setRadius(1.0);
 	obstacle.setDensity(HUGE_VAL);
 
 
