@@ -39,6 +39,15 @@ bool j1Scene::Start()
 	ball.y = 0;
 	ball.w = 64;
 	ball.h = 64;
+	Ball.setX(0);
+	Ball.setY(0);
+	Ball.setAX(1);
+	Ball.setAY(0);
+	Ball.setDensity(5);
+	Ball.setRadius(5);
+	Ball.setVX(0.1);
+	Ball.setVY(0);
+
 
 	step = 0;
 	return true;
@@ -47,25 +56,26 @@ bool j1Scene::Start()
 // Called each loop iteration
 bool j1Scene::PreUpdate()
 {
+	Ball.update(9, Ball, 1);
 	return true;
 }
 
 // Called each loop iteration
 bool j1Scene::Update(float dt)
 {
-	if (step == 0)
-	App->render->Blit(img, 0, 0);
+	/*if (step == 0)
+	App->render->Blit(img, 0, 0);*/
 
-	if (App->input->GetKeyDown(SDLK_SPACE) && step == 0)
+	/*if (App->input->GetKeyDown(SDLK_SPACE) && step == 0)
 	{
 		step++;
 		Ball.enterData();
 	}
 	if (step == 1)
-	{
-		Ball.update(dt, Ball, 0);
-		App->render->Blit(ball_tex, ball.x, ball.y);
-	}
+	{*/
+	App->render->Blit(ball_tex, Ball.getX(), Ball.getY());
+
+	//}
 	return true;
 }
 
