@@ -24,6 +24,15 @@ ax = initial ax, when used in a formula ax = previous frame x acceleration
 new_ay = value of ay in the current frame
 ay = initial ay, when used in a formula ay = previous frame a acceleration
 
+fx = resultant force on x axis
+fy = resultant force on y axis
+
+initial_fx= initial force on x axis
+initial_fy= initial force on y axis
+
+CF = coefficient of friction with the ground
+ff = friction force of the object
+
 
 bool checkCollision() compares two object positions, if their distance is less than the sum of their radius, returns true
 
@@ -85,7 +94,6 @@ void object::enterData()
 	std::cin >> y;
 	std::cout << std::endl;
 
-
 	//vx
 	std::cout << "Enter a value for initial X velocity (m/s): ";
 	std::cin >> vx;
@@ -118,6 +126,33 @@ void object::enterData()
 	std::cin >> density;
 	std::cout << std::endl;
 	mass = volume * density;
+
+	//initial force
+	std::cout << "Enter a value for the initial force of the object on the x axis (N): ";
+	std::cin >> initial_fx;
+	std::cout << std::endl;
+
+	std::cout << "Enter a value for the initial force of the object on the y axis (N): ";
+	std::cin >> initial_fy;
+	std::cout << std::endl;
+
+	//coefficient of friction
+	int i = 0;
+	while (i == 0) {
+		std::cout << "Enter a value for the coefficient of friction(value should range between 0 and 1): ";
+		std::cin >> CF;
+		std::cout << std::endl;
+		if (CF >= 0 && CF <= 1) {
+			ff = CF * mass * GRAVITY;
+			i = 1;
+
+		}
+		else {
+			std::cout << "Wrong value introduced." << std::endl;
+			std::cout << std::endl;
+		}
+	}
+	
 }
 
 //get
@@ -230,6 +265,15 @@ void object::update(double time, object _object, double CR)
 
 		//Forces
 		fx = 0.5 * AIR_DENSITY * new_vx * new_vx * area * CD;
+		
+		if (initial_fx != 0) {
+			fx += initial_fx;
+			initial_fx = 0;
+		}
+
+		if (new_y == 0) {
+			fx += ff;
+		}
 
 		//Acceleration
 		if (new_vx <= 0.0)
@@ -243,7 +287,6 @@ void object::update(double time, object _object, double CR)
 		//Position
 		new_x = x + vx * dt + (new_ax / 2.0) * dt * dt;
 
-
 		//Y
 
 		//Updating previous frame variables
@@ -252,6 +295,11 @@ void object::update(double time, object _object, double CR)
 
 		//Forces
 		fy = 0.5 * AIR_DENSITY * new_vy * new_vy * area * CD;
+
+		if (initial_fy != 0) {
+			fy += initial_fy;
+			initial_fy = 0;
+		}
 
 		//Acceleration
 		if (new_vy <= 0.0)
@@ -265,15 +313,12 @@ void object::update(double time, object _object, double CR)
 		//Position
 		new_y = y + vy * dt + (new_ay / 2.0) * dt * dt;
 
-
-
 		//Solving ground collision
 		if (new_y < radius)
 		{
 			new_y = radius;
 			new_vy = 0.0;
 		}
-
 
 		//Collision
 
@@ -301,14 +346,34 @@ void object::update(double time, object _object, double CR)
 			std::cout << "x: " << x << "  vx: " << vx << "  ax: " << ax << std::endl;
 			std::cout << "y: " << y << "  vy: " << vy << "  ay: " << ay << std::endl << std::endl;
 		}
-		/*else
+		else
 		{
 			std::cout << "Second: " << second - 1 << "   Frame: " << secondFrame + 1 << "   Total Frame: " << frame << std::endl;
 			std::cout << "x: " << new_x << "  vx: " << new_vx << "  ax: " << new_ax << std::endl;
 			std::cout << "y: " << new_y << "  vy: " << new_vy << "  ay: " << new_ay << std::endl << std::endl;
 			std::cout << "distance to obect: " << distanceTo(_object) << std::endl;
-		}*/
-		else system("pause");
+		}
+		/*else system("pause");*/
 	}
+}
 
+void object::NewtonsLawsMRUA()
+{
+
+	new_ax = fx / mass;
+
+	new_vx = vx + new_ax * dt;
+
+	new_x = x + vx * dt + (new_ax / 2.0) * dt * dt;
+
+	new_ay = fy / mass;
+
+	new_vy = vy + new_ay * dt;
+
+	new_y = y + vy * dt + (new_ay / 2.0) * dt * dt;
+
+	std::cout << "x: " << new_x << "  vx: " << new_vx << "  ax: " << new_ax << std::endl;
+	std::cout << "y: " << new_y << "  vy: " << new_vy << "  ay: " << new_ay << std::endl << std::endl;
+
+	system("pause");
 }

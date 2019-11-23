@@ -5,6 +5,7 @@
 int main()
 {
 	double time;
+	int newton;
 
 	object sphere;
 	object obstacle;
@@ -27,4 +28,18 @@ int main()
 	std::cout << std::endl;
 
 	sphere.update(time, obstacle, 1);
+
+	std::cout << std::endl;
+	std::cout << "Enter '1' if you want to compare the results with Newton's laws" << std::endl;
+	std::cout << "Enter '0' if you want to exit" << std::endl << std::endl;
+	std::cin >> newton;
+
+	if (newton == 1)
+	{
+		sphere.NewtonsLawsMRUA();
+	}
+	else
+	{
+		system("pause");
+	}
 }

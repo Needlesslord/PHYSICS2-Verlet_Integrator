@@ -54,6 +54,8 @@ public:
 
 	void update(double time, object _object, double CR);
 
+	void NewtonsLawsMRUA();
+
 private:
 	//position
 	double x = 0.0;
@@ -79,9 +81,19 @@ private:
 	//drag coefficient
 	double CD = 0.47;
 
+	//coefficient of friction
+	double CF = 0.0;
+
 	//forces
 	double fx = 0.0;
 	double fy = 0.0;
+
+	//initial force
+	double initial_fx = 0.0;
+	double initial_fy = 0.0;
+
+	//friction force
+	double ff = 0.0;
 
 	//updated data
 	double new_x;
