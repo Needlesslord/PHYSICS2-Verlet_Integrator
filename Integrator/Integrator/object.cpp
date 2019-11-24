@@ -391,26 +391,30 @@ void object::Restart()
 	object obstacle;
 
 	std::cout << std::endl;
-	std::cout << "Enter '0' if you want to exit" << std::endl;
 	std::cout << "Enter '1' if you want to compare the results with Newton's laws" << std::endl;
-	std::cout << "Enter '2' if you want to restart the whole process" << std::endl << std::endl;
+	std::cout << "Enter '2' if you want to restart the whole process" << std::endl;
+	std::cout << "Enter another number if you want to exit" << std::endl << std::endl;
 
 	std::cin >> restart;
 
-	if (restart == 0)
-	{
-	system("pause");
-	}
-	else if (restart == 1)
+	if (restart == 1)
 	{
 		NewtonsLawsMRUA();
 	}
 	else if (restart == 2)
 	{
+		std::cout << std::endl;
+
 		enterData();
+
 		std::cout << "How many seconds will the simulation last? ";
 		std::cin >> time;
 		std::cout << std::endl;
+
 		update(time, obstacle, 1);
+	}
+	else 
+	{
+	system("pause");
 	}
 }
