@@ -224,10 +224,10 @@ double object::getFY()
 
 double object::distanceTo(object _object)
 {
-	double distanceX = abs(new_x - _object.x);
-	double distanceY = abs(new_y - _object.y);
+	double distanceX = abs(new_x - _object.x) - (edge_length / 2 - _object.edge_length / 2);
+	double distanceY = abs(new_y - _object.y) - (edge_length / 2 - _object.edge_length / 2);
 
-	double distance = sqrt(pow(distanceX, 2) + pow(distanceY, 2));
+	double distance = sqrt(distanceX * distanceX + distanceY * distanceY);
 
 	return distance;
 }
@@ -237,7 +237,7 @@ bool object::checkCollission(object _object)
 	double distanceX = abs(new_x - _object.x);
 	double distanceY = abs(new_y - _object.y);
 
-	if (distanceX <= edge_length / 2 + _object.edge_length / 2 || distanceY <= edge_length / 2 + _object.edge_length)
+	if (distanceX <= 0.0 || distanceY <= 0.0)
 		return true;
 	else
 		return false;
@@ -325,7 +325,7 @@ void object::update(double time, object _object, double CR)
 
 		//Collision
 
-		if (checkCollission(_object) == true && checkCollisionAgain == true)
+		if (checkCollission(_object) == true /*&& checkCollisionAgain == true*/)
 		{
 			std::cout << "Collision!" << std::endl;
 			//new_vx = ((CR * _object.mass * (_object.vx - new_vx) + mass * new_vx + _object.mass * _object.vx) / (mass + _object.mass));
