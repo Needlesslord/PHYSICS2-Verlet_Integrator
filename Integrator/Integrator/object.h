@@ -86,6 +86,9 @@ private:
 	//coefficient of friction
 	double CF = 0.0;
 
+	//coefficient of elasticity
+	int isElastic = 0;
+
 	//forces
 	double fx = 0.0;
 	double fy = 0.0;
