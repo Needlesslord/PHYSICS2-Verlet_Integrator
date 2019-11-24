@@ -32,12 +32,16 @@ public:
 	// Called before quitting
 	bool CleanUp();
 
-	int step;
-	SDL_Rect ball;
-
+	uint step;
+	uint count = 0;
+	uint i = 0;
+	uint lastInput[10] = {};
+	char count_string[10];
+	
 private:
 	SDL_Texture* img;
 	SDL_Texture* ball_tex;
+	int font;
 };
 
 #endif // __j1SCENE_H__

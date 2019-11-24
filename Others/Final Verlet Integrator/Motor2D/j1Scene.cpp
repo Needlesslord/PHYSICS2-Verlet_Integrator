@@ -7,6 +7,7 @@
 #include "j1Render.h"
 #include "j1Window.h"
 #include "j1Scene.h"
+#include "ModuleFonts.h"
 #include "VerletIntegrator.h"
 
 object Ball;
@@ -33,22 +34,7 @@ bool j1Scene::Start()
 {
 	img = App->tex->Load("textures/0-0_Welcome.png");
 	ball_tex = App->tex->Load("textures/ball.png");
-	Ball.enterData();
-
-	ball.x = 0;
-	ball.y = 0;
-	ball.w = 64;
-	ball.h = 64;
-	Ball.setX(0);
-	Ball.setY(0);
-	Ball.setAX(1);
-	Ball.setAY(0);
-	Ball.setDensity(5);
-	Ball.setRadius(5);
-	Ball.setVX(0.1);
-	Ball.setVY(0);
-
-
+	font = App->fonts->Load("textures/Fonts_Numbers.png", "0123456789", 1);
 	step = 0;
 	return true;
 }
@@ -56,35 +42,112 @@ bool j1Scene::Start()
 // Called each loop iteration
 bool j1Scene::PreUpdate()
 {
-	Ball.update(9, Ball, 1);
 	return true;
 }
 
 // Called each loop iteration
 bool j1Scene::Update(float dt)
 {
-	/*if (step == 0)
-	App->render->Blit(img, 0, 0);*/
-
-	/*if (App->input->GetKeyDown(SDLK_SPACE) && step == 0)
+	if (step == 0)
 	{
-		step++;
-		Ball.enterData();
-	}
-	if (step == 1)
-	{*/
-	App->render->Blit(ball_tex, Ball.getX(), Ball.getY());
+		App->render->Blit(img, 0, 0);
 
-	//}
+		if (App->input->GetKeyDown(SDLK_RETURN))
+		{
+			step++;
+		}
+	}
+	else if (step == 1)
+	{
+		if (count < 100000000) 
+		{
+			if (App->input->GetKeyDown(SDLK_0))
+			{
+				lastInput[i] = 0;
+				count = count * 10;
+				i++;
+			}
+			if (App->input->GetKeyDown(SDLK_1))
+			{
+				lastInput[i] = 1;
+				count = count * 10 + lastInput[i];
+				i++;
+			}
+			if (App->input->GetKeyDown(SDLK_2))
+			{
+				lastInput[i] = 2;
+				count = count * 10 + lastInput[i];
+				i++;
+			}
+			if (App->input->GetKeyDown(SDLK_3))
+			{
+				lastInput[i] = 3;
+				count = count * 10 + lastInput[i];
+				i++;
+			}
+			if (App->input->GetKeyDown(SDLK_4))
+			{
+				lastInput[i] = 4;
+				count = count * 10 + lastInput[i];
+				i++;
+			}
+			if (App->input->GetKeyDown(SDLK_5))
+			{
+				lastInput[i] = 5;
+				count = count * 10 + lastInput[i];
+				i++;
+			}
+			if (App->input->GetKeyDown(SDLK_6))
+			{
+				lastInput[i] = 6;
+				count = count * 10 + lastInput[i];
+				i++;
+			}
+			if (App->input->GetKeyDown(SDLK_7))
+			{
+				lastInput[i] = 7;
+				count = count * 10 + lastInput[i];
+				i++;
+			}
+			if (App->input->GetKeyDown(SDLK_8))
+			{
+				lastInput[i] = 8;
+				count = count * 10 + lastInput[i];
+				i++;
+			}
+			if (App->input->GetKeyDown(SDLK_9))
+			{
+				lastInput[i] = 9;
+				count = count * 10 + lastInput[i];
+				i++;
+			}
+		}
+		if (count != 0)
+		{
+			if (App->input->GetKeyDown(SDLK_BACKSPACE))
+			{
+				i--;
+				count = count - lastInput[i];
+				count = count / 10;
+			}
+		}
+	}
 	return true;
 }
 
 // Called each loop iteration
 bool j1Scene::PostUpdate()
 {
+	if (step == 1)
+	{
+	sprintf_s(count_string, 10, "%1d", count);
+	App->fonts->BlitText(100, 100, font, count_string);
+	}
+
 	bool ret = true;
 	if (App->input->GetKeyDown(SDLK_ESCAPE))
 		ret = false;
+
 	return ret;
 }
 
@@ -94,5 +157,6 @@ bool j1Scene::CleanUp()
 	LOG("Freeing scene");
 	App->tex->UnLoad(img);
 	App->tex->UnLoad(ball_tex);
+	App->fonts->UnLoad(font);
 	return true;
 }
