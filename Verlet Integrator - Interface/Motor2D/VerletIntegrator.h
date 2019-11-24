@@ -57,6 +57,10 @@ public:
 
 	void update(double time, object _object, double CR);
 
+	void NewtonsLawsMRUA();		//Newton
+
+	void Restart();				//Restart 
+
 private:
 	//position
 	double x = 0.0;
@@ -94,6 +98,8 @@ private:
 	double new_ax;
 	double new_ay;
 
+	//time
+	double dt;
 };
 
 
