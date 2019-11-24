@@ -56,6 +56,8 @@ public:
 
 	void NewtonsLawsMRUA();
 
+	void Restart();
+
 private:
 	//position
 	double x = 0.0;

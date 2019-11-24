@@ -250,6 +250,7 @@ void object::update(double time, object _object, double CR)
 	unsigned int secondFrame = 0;
 	bool checkCollisionAgain = true;
 
+
 	new_x = x;
 	new_y = y;
 	new_vx = vx;
@@ -358,11 +359,12 @@ void object::update(double time, object _object, double CR)
 		}
 		/*else system("pause");*/
 	}
+	
+	Restart();
 }
 
 void object::NewtonsLawsMRUA()
 {
-
 	new_ax = fx / mass;
 
 	new_vx = vx + new_ax * dt;
@@ -375,8 +377,40 @@ void object::NewtonsLawsMRUA()
 
 	new_y = y + vy * dt + (new_ay / 2.0) * dt * dt;
 
+	std::cout << "NEWTON'S RESULTS" << std::endl << std::endl;
 	std::cout << "x: " << new_x << "  vx: " << new_vx << "  ax: " << new_ax << std::endl;
 	std::cout << "y: " << new_y << "  vy: " << new_vy << "  ay: " << new_ay << std::endl << std::endl;
 
+	Restart();
+}
+
+void object::Restart()
+{
+	int restart;
+	double time;
+	object obstacle;
+
+	std::cout << std::endl;
+	std::cout << "Enter '0' if you want to exit" << std::endl;
+	std::cout << "Enter '1' if you want to compare the results with Newton's laws" << std::endl;
+	std::cout << "Enter '2' if you want to restart the whole process" << std::endl << std::endl;
+
+	std::cin >> restart;
+
+	if (restart == 0)
+	{
 	system("pause");
+	}
+	else if (restart == 1)
+	{
+		NewtonsLawsMRUA();
+	}
+	else if (restart == 2)
+	{
+		enterData();
+		std::cout << "How many seconds will the simulation last? ";
+		std::cin >> time;
+		std::cout << std::endl;
+		update(time, obstacle, 1);
+	}
 }

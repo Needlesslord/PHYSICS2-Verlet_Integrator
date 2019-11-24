@@ -5,7 +5,6 @@
 int main()
 {
 	double time;
-	int newton;
 
 	object cube;
 	object obstacle;
@@ -28,18 +27,4 @@ int main()
 	std::cout << std::endl;
 
 	cube.update(time, obstacle, 1);
-
-	std::cout << std::endl;
-	std::cout << "Enter '1' if you want to compare the results with Newton's laws" << std::endl;
-	std::cout << "Enter '0' if you want to exit" << std::endl << std::endl;
-	std::cin >> newton;
-
-	if (newton == 1)
-	{
-		cube.NewtonsLawsMRUA();
-	}
-	else
-	{
-		system("pause");
-	}
 }
