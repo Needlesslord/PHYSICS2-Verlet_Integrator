@@ -92,11 +92,11 @@ private:
 	double df = 0.0;
 
 	//updated data
-	double new_x;
-	double new_y;
-	double new_vx;
-	double new_vy;
-	double new_ax;
-	double new_ay;
+	double new_x = 0.0;
+	double new_y = 0.0;
+	double new_vx = 0.0;
+	double new_vy = 0.0;
+	double new_ax = 0.0;
+	double new_ay = 0.0;
 
 };

@@ -1,9 +1,14 @@
 #include "object.h"
+#include "Window.h"
+#include "SDL/include/SDL.h"
 
 
+class Window;
 
-int main()
+int main(int argc, char* argv[])
 {
+	
+	
 	double time;
 	int newton;
 
@@ -42,4 +47,6 @@ int main()
 	{
 		system("pause");
 	}
+
+	return 0;
 }
