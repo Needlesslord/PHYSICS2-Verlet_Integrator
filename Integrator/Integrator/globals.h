@@ -11,6 +11,13 @@ void log(const char file[], int line, const char* format, ...);
 #define WIN_BORDERLESS 0
 #define WIN_RESIZABLE 0
 
+enum update_status
+{
+	UPDATE_CONTINUE = 1,
+	UPDATE_STOP,
+	UPDATE_ERROR
+};
+
 const double GRAVITY = -9.81;
 
 const double WATER_DENSITY = 1000.0;

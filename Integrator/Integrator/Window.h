@@ -1,17 +1,19 @@
 #ifndef __ModuleWindow_H__
 #define __ModuleWindow_H__
 
+#include "Module.h"
+
 struct SDL_Window;
 struct SDL_Surface;
 
-class Window
+class ModuleWindow : public Module
 {
 public:
 
-	Window();
+	ModuleWindow();
 
 	// Destructor
-	virtual ~Window();
+	virtual ~ModuleWindow();
 
 	// Called before quitting
 	bool Init();

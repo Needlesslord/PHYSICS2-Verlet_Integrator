@@ -1,13 +1,17 @@
 #include "object.h"
 #include "Window.h"
 #include "SDL/include/SDL.h"
+#pragma comment( lib, "SDL/libx86/SDL2.lib" )
+#pragma comment( lib, "SDL/libx86/SDL2main.lib" )
 
 
-class Window;
+class ModuleWindow;
 
 int main(int argc, char* argv[])
 {
-	
+	ModuleWindow* win;
+	win = new ModuleWindow();
+	win->Init();
 	
 	double time;
 	int newton;

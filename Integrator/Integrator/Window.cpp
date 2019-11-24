@@ -2,30 +2,32 @@
 #include "Window.h"
 #include "SDL/include/SDL.h"
 
-Window::Window()
+ModuleWindow::ModuleWindow() : Module()
 {
 }
 
 // Destructor
-Window::~Window()
+ModuleWindow::~ModuleWindow()
 {
 }
 
 // Called before render is available
-bool Window::Init()
+bool ModuleWindow::Init()
 {
+	LOG("Init SDL window & surface");
 	bool ret = true;
 
 	if (SDL_Init(SDL_INIT_VIDEO) < 0)
 	{
+		LOG("SDL_VIDEO could not initialize! SDL_Error:\n");
 		LOG(SDL_GetError());
 		ret = false;
 	}
 	else
 	{
 		//Create window
-		int width = SCREEN_WIDTH * SCREEN_SIZE;
-		int height = SCREEN_HEIGHT * SCREEN_SIZE;
+		int width = SCREEN_WIDTH;
+		int height = SCREEN_HEIGHT;
 		Uint32 flags = SDL_WINDOW_SHOWN;
 
 		if (WIN_FULLSCREEN == true)
@@ -40,7 +42,7 @@ bool Window::Init()
 		if (WIN_FULLSCREEN_DESKTOP == true)
 			flags |= SDL_WINDOW_FULLSCREEN_DESKTOP;
 
-		window = SDL_CreateWindow("X-Multiply", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, width, height, flags);
+		window = SDL_CreateWindow("", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, width, height, flags);
 
 		if (window == NULL)
 		{
@@ -58,7 +60,7 @@ bool Window::Init()
 }
 
 // Called before quitting
-bool Window::CleanUp()
+bool ModuleWindow::CleanUp()
 {
 	LOG("Destroying SDL window and quitting all SDL systems");
 
