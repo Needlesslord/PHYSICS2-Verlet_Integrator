@@ -71,6 +71,10 @@ bool j1Scene::Update(float dt)
 		{
 			step++;
 		}
+		else if (App->input->GetKeyDown(SDLK_b))
+		{
+			step--;
+		}
 	}
 	else if (step == 2)
 	{
@@ -79,6 +83,10 @@ bool j1Scene::Update(float dt)
 		if (App->input->GetKeyDown(SDLK_RETURN))
 		{
 			step++;
+		}
+		else if (App->input->GetKeyDown(SDLK_b))
+		{
+			step--;
 		}
 		if (count < 100000000) 
 		{
@@ -153,13 +161,57 @@ bool j1Scene::Update(float dt)
 			}
 		}
 	}
+	else if (step == 3)
+	{
+		App->render->Blit(screen_3, 0, 0);
+
+		if (App->input->GetKeyDown(SDLK_1))
+		{
+			step++;
+		}
+		else if (App->input->GetKeyDown(SDLK_2))
+		{
+			step += 2;
+		}
+		else if (App->input->GetKeyDown(SDLK_b))
+		{
+			step--;
+		}
+	}
+	else if (step == 4)
+	{
+		App->render->Blit(screen_4, 0, 0);
+
+		if (App->input->GetKeyDown(SDLK_RETURN))
+		{
+			step++;
+		}
+		else if (App->input->GetKeyDown(SDLK_b))
+		{
+			step--;
+		}
+	}
+	else if (step == 5)
+	{
+		App->render->Blit(screen_5, 0, 0);
+
+		if (App->input->GetKeyDown(SDLK_RETURN))
+		{
+			step++;
+		}
+		else if (App->input->GetKeyDown(SDLK_b))
+		{
+			step -= 2;
+		}
+	}
+	if (step > 5)step = 5;
 	return true;
 }
 
 // Called each loop iteration
 bool j1Scene::PostUpdate()
 {
-	if (step == 1)
+	if (step == 2)
 	{
 	sprintf_s(count_string, 10, "%1d", count);
 	App->fonts->BlitText(100, 100, font, count_string);
@@ -177,11 +229,6 @@ bool j1Scene::CleanUp()
 {
 	LOG("Freeing scene");
 	App->tex->UnLoad(screen_0);
-	App->tex->UnLoad(screen_1);
-	App->tex->UnLoad(screen_2);
-	App->tex->UnLoad(screen_3);
-	App->tex->UnLoad(screen_4);
-	App->tex->UnLoad(screen_5);
 	App->tex->UnLoad(ball_tex);
 	App->fonts->UnLoad(font);
 	return true;

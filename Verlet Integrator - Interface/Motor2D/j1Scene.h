@@ -36,6 +36,7 @@ public:
 	uint count = 0;
 	uint i = 0;
 	uint lastInput[10] = {};
+	uint font;
 	char count_string[10];
 	
 private:
@@ -47,7 +48,6 @@ private:
 	SDL_Texture* screen_5;
 
 	SDL_Texture* ball_tex;
-	int font;
 };
 
 #endif // __j1SCENE_H__
