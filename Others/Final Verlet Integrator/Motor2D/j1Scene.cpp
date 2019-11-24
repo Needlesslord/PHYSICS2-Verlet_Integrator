@@ -32,7 +32,13 @@ bool j1Scene::Awake()
 // Called before the first frame
 bool j1Scene::Start()
 {
-	img = App->tex->Load("textures/0-0_Welcome.png");
+	screen_0 = App->tex->Load("textures/0.png");
+	screen_1 = App->tex->Load("textures/1.png");
+	screen_2 = App->tex->Load("textures/2.png");
+	screen_3 = App->tex->Load("textures/3.png");
+	screen_4 = App->tex->Load("textures/4.png");
+	screen_5 = App->tex->Load("textures/5.png");
+
 	ball_tex = App->tex->Load("textures/ball.png");
 	font = App->fonts->Load("textures/Fonts_Numbers.png", "0123456789", 1);
 	step = 0;
@@ -50,7 +56,7 @@ bool j1Scene::Update(float dt)
 {
 	if (step == 0)
 	{
-		App->render->Blit(img, 0, 0);
+		App->render->Blit(screen_0, 0, 0);
 
 		if (App->input->GetKeyDown(SDLK_RETURN))
 		{
@@ -59,6 +65,21 @@ bool j1Scene::Update(float dt)
 	}
 	else if (step == 1)
 	{
+		App->render->Blit(screen_1, 0, 0);
+
+		if (App->input->GetKeyDown(SDLK_RETURN))
+		{
+			step++;
+		}
+	}
+	else if (step == 2)
+	{
+		App->render->Blit(screen_2, 0, 0);
+
+		if (App->input->GetKeyDown(SDLK_RETURN))
+		{
+			step++;
+		}
 		if (count < 100000000) 
 		{
 			if (App->input->GetKeyDown(SDLK_0))
@@ -155,7 +176,12 @@ bool j1Scene::PostUpdate()
 bool j1Scene::CleanUp()
 {
 	LOG("Freeing scene");
-	App->tex->UnLoad(img);
+	App->tex->UnLoad(screen_0);
+	App->tex->UnLoad(screen_1);
+	App->tex->UnLoad(screen_2);
+	App->tex->UnLoad(screen_3);
+	App->tex->UnLoad(screen_4);
+	App->tex->UnLoad(screen_5);
 	App->tex->UnLoad(ball_tex);
 	App->fonts->UnLoad(font);
 	return true;

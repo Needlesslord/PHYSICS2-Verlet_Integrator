@@ -39,7 +39,13 @@ public:
 	char count_string[10];
 	
 private:
-	SDL_Texture* img;
+	SDL_Texture* screen_0;
+	SDL_Texture* screen_1;
+	SDL_Texture* screen_2;
+	SDL_Texture* screen_3;
+	SDL_Texture* screen_4;
+	SDL_Texture* screen_5;
+
 	SDL_Texture* ball_tex;
 	int font;
 };

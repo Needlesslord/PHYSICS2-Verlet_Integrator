@@ -59,8 +59,8 @@ template <class VALUE_TYPE> void SWAP(VALUE_TYPE& a, VALUE_TYPE& b)
 #define RESIZABLE true
 #define FULLSCREEN_WINDOW false
 #define TITLE "Verlet Integrator"
-#define WIDTH 1024
-#define HEIGHT 768
+#define WIDTH 945
+#define HEIGHT 756
 #define SCALE 1
 
 // Joins a path and file
