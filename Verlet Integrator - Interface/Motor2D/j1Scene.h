@@ -37,6 +37,8 @@ public:
 	uint i = 0;
 	uint lastInput[10] = {};
 	uint font;
+	int star_position [12] = {137, 168, 199, 230, 261, 292, 323, 354, 385, 416, 464, 513};
+	uint num_star;
 	char count_string[10];
 	
 private:
@@ -46,6 +48,8 @@ private:
 	SDL_Texture* screen_3;
 	SDL_Texture* screen_4;
 	SDL_Texture* screen_5;
+
+	SDL_Texture* star;
 
 	SDL_Texture* ball_tex;
 };

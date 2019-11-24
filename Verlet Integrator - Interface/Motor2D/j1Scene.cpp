@@ -39,9 +39,12 @@ bool j1Scene::Start()
 	screen_4 = App->tex->Load("textures/4.png");
 	screen_5 = App->tex->Load("textures/5.png");
 
+	star = App->tex->Load("textures/star.png");
+
 	ball_tex = App->tex->Load("textures/ball.png");
 	font = App->fonts->Load("textures/Fonts_Numbers.png", "0123456789", 1);
 	step = 0;
+	num_star = 0;
 	return true;
 }
 
@@ -80,9 +83,21 @@ bool j1Scene::Update(float dt)
 	{
 		App->render->Blit(screen_2, 0, 0);
 
+		App->render->Blit(star, 30, star_position[num_star]);
+
+		if (App->input->GetKeyDown(SDLK_s) && num_star < 11)
+		{
+			num_star++;
+		}
+		if (App->input->GetKeyDown(SDLK_w) && num_star > 0)
+		{
+			num_star--;
+		}
+
 		if (App->input->GetKeyDown(SDLK_RETURN))
 		{
 			step++;
+			num_star = 0;
 		}
 		else if (App->input->GetKeyDown(SDLK_b))
 		{
