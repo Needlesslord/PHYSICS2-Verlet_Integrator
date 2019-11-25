@@ -106,7 +106,7 @@ bool j1Scene::Update(float dt)
 			currentInput--;
 		}
 
-		else if (App->input->GetKeyDown(SDLK_s) && num_star < 11 && currentInput < 13)
+		else if (App->input->GetKeyDown(SDLK_s) && num_star < 12 && currentInput < 14)
 		{
 			num_star++;
 			currentInput++;
@@ -601,160 +601,7 @@ bool j1Scene::Update(float dt)
 			}
 		}
 
-		// INPUT fx0
-		else if (currentInput == 8)
-		{
-			if (fx0.count < 100000000)
-			{
-				if (App->input->GetKeyDown(SDLK_0))
-				{
-					fx0.lastInput[fx0.i] = 0;
-					fx0.count = fx0.count * 10;
-					fx0.i++;
-				}
-				if (App->input->GetKeyDown(SDLK_1))
-				{
-					fx0.lastInput[fx0.i] = 1;
-					fx0.count = fx0.count * 10 + fx0.lastInput[fx0.i];
-					fx0.i++;
-				}
-				if (App->input->GetKeyDown(SDLK_2))
-				{
-					fx0.lastInput[fx0.i] = 2;
-					fx0.count = fx0.count * 10 + fx0.lastInput[fx0.i];
-					fx0.i++;
-				}
-				if (App->input->GetKeyDown(SDLK_3))
-				{
-					fx0.lastInput[fx0.i] = 3;
-					fx0.count = fx0.count * 10 + fx0.lastInput[fx0.i];
-					fx0.i++;
-				}
-				if (App->input->GetKeyDown(SDLK_4))
-				{
-					fx0.lastInput[fx0.i] = 4;
-					fx0.count = fx0.count * 10 + fx0.lastInput[fx0.i];
-					fx0.i++;
-				}
-				if (App->input->GetKeyDown(SDLK_5))
-				{
-					fx0.lastInput[fx0.i] = 5;
-					fx0.count = fx0.count * 10 + fx0.lastInput[fx0.i];
-					fx0.i++;
-				}
-				if (App->input->GetKeyDown(SDLK_6))
-				{
-					fx0.lastInput[fx0.i] = 6;
-					fx0.count = fx0.count * 10 + fx0.lastInput[fx0.i];
-					fx0.i++;
-				}
-				if (App->input->GetKeyDown(SDLK_7))
-				{
-					fx0.lastInput[fx0.i] = 7;
-					fx0.count = fx0.count * 10 + fx0.lastInput[fx0.i];
-					fx0.i++;
-				}
-				if (App->input->GetKeyDown(SDLK_8))
-				{
-					fx0.lastInput[fx0.i] = 8;
-					fx0.count = fx0.count * 10 + fx0.lastInput[fx0.i];
-					fx0.i++;
-				}
-				if (App->input->GetKeyDown(SDLK_9))
-				{
-					fx0.lastInput[fx0.i] = 9;
-					fx0.count = fx0.count * 10 + fx0.lastInput[fx0.i];
-					fx0.i++;
-				}
-			}
-			if (fx0.count != 0)
-			{
-				if (App->input->GetKeyDown(SDLK_BACKSPACE))
-				{
-					fx0.i--;
-					fx0.count = fx0.count - fx0.lastInput[fx0.i];
-					fx0.count = fx0.count / 10;
-				}
-			}
-		}
-
-		// INPUT fy0
-		else if (currentInput == 9)
-		{
-			if (fy0.count < 100000000)
-			{
-				if (App->input->GetKeyDown(SDLK_0))
-				{
-					fy0.lastInput[fy0.i] = 0;
-					fy0.count = fy0.count * 10;
-					fy0.i++;
-				}
-				if (App->input->GetKeyDown(SDLK_1))
-				{
-					fy0.lastInput[fy0.i] = 1;
-					fy0.count = fy0.count * 10 + fy0.lastInput[fy0.i];
-					fy0.i++;
-				}
-				if (App->input->GetKeyDown(SDLK_2))
-				{
-					fy0.lastInput[fy0.i] = 2;
-					fy0.count = fy0.count * 10 + fy0.lastInput[fy0.i];
-					fy0.i++;
-				}
-				if (App->input->GetKeyDown(SDLK_3))
-				{
-					fy0.lastInput[fy0.i] = 3;
-					fy0.count = fy0.count * 10 + fy0.lastInput[fy0.i];
-					fy0.i++;
-				}
-				if (App->input->GetKeyDown(SDLK_4))
-				{
-					fy0.lastInput[fy0.i] = 4;
-					fy0.count = fy0.count * 10 + fy0.lastInput[fy0.i];
-					fy0.i++;
-				}				if (App->input->GetKeyDown(SDLK_5))
-				{
-					fy0.lastInput[fy0.i] = 5;
-					fy0.count = fy0.count * 10 + fy0.lastInput[fy0.i];
-					fy0.i++;
-				}
-				if (App->input->GetKeyDown(SDLK_6))
-				{
-					fy0.lastInput[fy0.i] = 6;
-					fy0.count = fy0.count * 10 + fy0.lastInput[fy0.i];
-					fy0.i++;
-				}
-				if (App->input->GetKeyDown(SDLK_7))
-				{
-					fy0.lastInput[fy0.i] = 7;
-					fy0.count = fy0.count * 10 + fy0.lastInput[fy0.i];
-					fy0.i++;
-				}
-				if (App->input->GetKeyDown(SDLK_8))
-				{
-					fy0.lastInput[fy0.i] = 8;
-					fy0.count = fy0.count * 10 + fy0.lastInput[fy0.i];
-					fy0.i++;
-				}
-				if (App->input->GetKeyDown(SDLK_9))
-				{
-					fy0.lastInput[fy0.i] = 9;
-					fy0.count = fy0.count * 10 + fy0.lastInput[fy0.i];
-					fy0.i++;
-				}
-			}
-			if (fy0.count != 0)
-			{
-				if (App->input->GetKeyDown(SDLK_BACKSPACE))
-				{
-					fy0.i--;
-					fy0.count = fy0.count - fy0.lastInput[fy0.i];
-					fy0.count = fy0.count / 10;
-				}
-			}
-		}
-
-		// INPUT L
+		// INPUT SideLength
 		else if (currentInput == 7)
 		{
 			if (SideLength.count < 100000000)
@@ -831,8 +678,315 @@ bool j1Scene::Update(float dt)
 			}
 		}
 
-		// INPUT colision
+		// INPUT density
+		else if (currentInput == 8)
+		{
+			if (density.count < 100000000)
+			{
+				if (App->input->GetKeyDown(SDLK_0))
+				{
+					density.lastInput[density.i] = 0;
+					density.count = density.count * 10;
+					density.i++;
+				}
+				if (App->input->GetKeyDown(SDLK_1))
+				{
+					density.lastInput[density.i] = 1;
+					density.count = density.count * 10 + density.lastInput[density.i];
+					density.i++;
+				}
+				if (App->input->GetKeyDown(SDLK_2))
+				{
+					density.lastInput[density.i] = 2;
+					density.count = density.count * 10 + density.lastInput[density.i];
+					density.i++;
+				}
+				if (App->input->GetKeyDown(SDLK_3))
+				{
+					density.lastInput[density.i] = 3;
+					density.count = density.count * 10 + density.lastInput[density.i];
+					density.i++;
+				}
+				if (App->input->GetKeyDown(SDLK_4))
+				{
+					density.lastInput[density.i] = 4;
+					density.count = density.count * 10 + density.lastInput[density.i];
+					density.i++;
+				}
+				if (App->input->GetKeyDown(SDLK_5))
+				{
+					density.lastInput[density.i] = 5;
+					density.count = density.count * 10 + density.lastInput[density.i];
+					density.i++;
+				}
+				if (App->input->GetKeyDown(SDLK_6))
+				{
+					density.lastInput[density.i] = 6;
+					density.count = density.count * 10 + density.lastInput[density.i];
+					density.i++;
+				}
+				if (App->input->GetKeyDown(SDLK_7))
+				{
+					density.lastInput[density.i] = 7;
+					density.count = density.count * 10 + density.lastInput[density.i];
+					density.i++;
+				}
+				if (App->input->GetKeyDown(SDLK_8))
+				{
+					density.lastInput[density.i] = 8;
+					density.count = density.count * 10 + density.lastInput[density.i];
+					density.i++;
+				}
+				if (App->input->GetKeyDown(SDLK_9))
+				{
+					density.lastInput[density.i] = 9;
+					density.count = density.count * 10 + density.lastInput[density.i];
+					density.i++; 
+				}
+			}
+			if (density.count != 0)
+			{
+				if (App->input->GetKeyDown(SDLK_BACKSPACE))
+				{
+					density.i--;
+					density.count = density.count - density.lastInput[density.i];
+					density.count = density.count / 10;
+				}
+			}
+		}
+
+		// INPUT fx0
+		else if (currentInput == 9)
+		{
+			if (fx0.count < 100000000)
+			{
+				if (App->input->GetKeyDown(SDLK_0))
+				{
+					fx0.lastInput[fx0.i] = 0;
+					fx0.count = fx0.count * 10;
+					fx0.i++;
+				}
+				if (App->input->GetKeyDown(SDLK_1))
+				{
+					fx0.lastInput[fx0.i] = 1;
+					fx0.count = fx0.count * 10 + fx0.lastInput[fx0.i];
+					fx0.i++;
+				}
+				if (App->input->GetKeyDown(SDLK_2))
+				{
+					fx0.lastInput[fx0.i] = 2;
+					fx0.count = fx0.count * 10 + fx0.lastInput[fx0.i];
+					fx0.i++;
+				}
+				if (App->input->GetKeyDown(SDLK_3))
+				{
+					fx0.lastInput[fx0.i] = 3;
+					fx0.count = fx0.count * 10 + fx0.lastInput[fx0.i];
+					fx0.i++;
+				}
+				if (App->input->GetKeyDown(SDLK_4))
+				{
+					fx0.lastInput[fx0.i] = 4;
+					fx0.count = fx0.count * 10 + fx0.lastInput[fx0.i];
+					fx0.i++;
+				}
+				if (App->input->GetKeyDown(SDLK_5))
+				{
+					fx0.lastInput[fx0.i] = 5;
+					fx0.count = fx0.count * 10 + fx0.lastInput[fx0.i];
+					fx0.i++;
+				}
+				if (App->input->GetKeyDown(SDLK_6))
+				{
+					fx0.lastInput[fx0.i] = 6;
+					fx0.count = fx0.count * 10 + fx0.lastInput[fx0.i];
+					fx0.i++;
+				}
+				if (App->input->GetKeyDown(SDLK_7))
+				{
+					fx0.lastInput[fx0.i] = 7;
+					fx0.count = fx0.count * 10 + fx0.lastInput[fx0.i];
+					fx0.i++;
+				}
+				if (App->input->GetKeyDown(SDLK_8))
+				{
+					fx0.lastInput[fx0.i] = 8;
+					fx0.count = fx0.count * 10 + fx0.lastInput[fx0.i];
+					fx0.i++;
+				}
+				if (App->input->GetKeyDown(SDLK_9))
+				{
+					fx0.lastInput[fx0.i] = 9;
+					fx0.count = fx0.count * 10 + fx0.lastInput[fx0.i];
+					fx0.i++;
+				}
+			}
+			if (fx0.count != 0)
+			{
+				if (App->input->GetKeyDown(SDLK_BACKSPACE))
+				{
+					fx0.i--;
+					fx0.count = fx0.count - fx0.lastInput[fx0.i];
+					fx0.count = fx0.count / 10;
+				}
+			}
+		}
+
+		// INPUT fy0
+		else if (currentInput == 10)
+		{
+			if (fy0.count < 100000000)
+			{
+				if (App->input->GetKeyDown(SDLK_0))
+				{
+					fy0.lastInput[fy0.i] = 0;
+					fy0.count = fy0.count * 10;
+					fy0.i++;
+				}
+				if (App->input->GetKeyDown(SDLK_1))
+				{
+					fy0.lastInput[fy0.i] = 1;
+					fy0.count = fy0.count * 10 + fy0.lastInput[fy0.i];
+					fy0.i++;
+				}
+				if (App->input->GetKeyDown(SDLK_2))
+				{
+					fy0.lastInput[fy0.i] = 2;
+					fy0.count = fy0.count * 10 + fy0.lastInput[fy0.i];
+					fy0.i++;
+				}
+				if (App->input->GetKeyDown(SDLK_3))
+				{
+					fy0.lastInput[fy0.i] = 3;
+					fy0.count = fy0.count * 10 + fy0.lastInput[fy0.i];
+					fy0.i++;
+				}
+				if (App->input->GetKeyDown(SDLK_4))
+				{
+					fy0.lastInput[fy0.i] = 4;
+					fy0.count = fy0.count * 10 + fy0.lastInput[fy0.i];
+					fy0.i++;
+				}				if (App->input->GetKeyDown(SDLK_5))
+				{
+					fy0.lastInput[fy0.i] = 5;
+					fy0.count = fy0.count * 10 + fy0.lastInput[fy0.i];
+					fy0.i++;
+				}
+				if (App->input->GetKeyDown(SDLK_6))
+				{
+					fy0.lastInput[fy0.i] = 6;
+					fy0.count = fy0.count * 10 + fy0.lastInput[fy0.i];
+					fy0.i++;
+				}
+				if (App->input->GetKeyDown(SDLK_7))
+				{
+					fy0.lastInput[fy0.i] = 7;
+					fy0.count = fy0.count * 10 + fy0.lastInput[fy0.i];
+					fy0.i++;
+				}
+				if (App->input->GetKeyDown(SDLK_8))
+				{
+					fy0.lastInput[fy0.i] = 8;
+					fy0.count = fy0.count * 10 + fy0.lastInput[fy0.i];
+					fy0.i++;
+				}
+				if (App->input->GetKeyDown(SDLK_9))
+				{
+					fy0.lastInput[fy0.i] = 9;
+					fy0.count = fy0.count * 10 + fy0.lastInput[fy0.i];
+					fy0.i++;
+				}
+			}
+			if (fy0.count != 0)
+			{
+				if (App->input->GetKeyDown(SDLK_BACKSPACE))
+				{
+					fy0.i--;
+					fy0.count = fy0.count - fy0.lastInput[fy0.i];
+					fy0.count = fy0.count / 10;
+				}
+			}
+		}
+
+		// INPUT mu
 		else if (currentInput == 11)
+		{
+			if (mu.count < 100000000)
+			{
+				if (App->input->GetKeyDown(SDLK_0))
+				{
+					mu.lastInput[mu.i] = 0;
+					mu.count = mu.count * 10;
+					mu.i++;
+				}
+				if (App->input->GetKeyDown(SDLK_1))
+				{
+					mu.lastInput[mu.i] = 1;
+					mu.count = mu.count * 10 + mu.lastInput[mu.i];
+					mu.i++;
+				}
+				if (App->input->GetKeyDown(SDLK_2))
+				{
+					mu.lastInput[mu.i] = 2;
+					mu.count = mu.count * 10 + mu.lastInput[mu.i];
+					mu.i++;
+				}
+				if (App->input->GetKeyDown(SDLK_3))
+				{
+					mu.lastInput[mu.i] = 3;
+					mu.count = mu.count * 10 + mu.lastInput[mu.i];
+					mu.i++;
+				}
+				if (App->input->GetKeyDown(SDLK_4))
+				{
+					mu.lastInput[mu.i] = 4;
+					mu.count = mu.count * 10 + mu.lastInput[mu.i];
+					mu.i++;
+				}
+				if (App->input->GetKeyDown(SDLK_5))
+				{
+					mu.lastInput[mu.i] = 5;
+					mu.count = mu.count * 10 + mu.lastInput[mu.i];
+					mu.i++;
+				}
+				if (App->input->GetKeyDown(SDLK_6))
+				{
+					mu.lastInput[mu.i] = 6;
+					mu.count = mu.count * 10 + mu.lastInput[mu.i];
+					mu.i++;
+				}
+				if (App->input->GetKeyDown(SDLK_7))
+				{
+					mu.lastInput[mu.i] = 7;
+					mu.count = mu.count * 10 + mu.lastInput[mu.i];
+					mu.i++;
+				}
+				if (App->input->GetKeyDown(SDLK_8))
+				{
+					mu.lastInput[mu.i] = 8;
+					mu.count = mu.count * 10 + mu.lastInput[mu.i];
+					mu.i++;
+				}
+				if (App->input->GetKeyDown(SDLK_9))
+				{
+					mu.lastInput[mu.i] = 9;
+					mu.count = mu.count * 10 + mu.lastInput[mu.i];
+					mu.i++;
+				}
+			}
+			if (mu.count != 0)
+			{
+				if (App->input->GetKeyDown(SDLK_BACKSPACE))
+				{
+					mu.i--;
+					mu.count = mu.count - mu.lastInput[mu.i];
+					mu.count = mu.count / 10;
+				}
+			}
+		}
+
+		// INPUT colision
+		else if (currentInput == 12)
 		{
 			if (collision.count < 100000000)
 			{
@@ -909,7 +1063,7 @@ bool j1Scene::Update(float dt)
 		}
 
 		// INPUT time
-		else if (currentInput == 12)
+		else if (currentInput == 13)
 		{
 			if (time.count < 100000000)
 			{
@@ -972,83 +1126,6 @@ bool j1Scene::Update(float dt)
 					time.lastInput[time.i] = 9;
 					time.count = time.count * 10 + time.lastInput[time.i];
 					time.i++;
-				}
-			}
-			if (mu.count != 0)
-			{
-				if (App->input->GetKeyDown(SDLK_BACKSPACE))
-				{
-					mu.i--;
-					mu.count = mu.count - mu.lastInput[mu.i];
-					mu.count = mu.count / 10;
-				}
-			}
-		}
-
-		// INPUT mu
-		else if (currentInput == 10)
-		{
-			if (mu.count < 100000000)
-			{
-				if (App->input->GetKeyDown(SDLK_0))
-				{
-					mu.lastInput[mu.i] = 0;
-					mu.count = mu.count * 10;
-					mu.i++;
-				}
-				if (App->input->GetKeyDown(SDLK_1))
-				{
-					mu.lastInput[mu.i] = 1;
-					mu.count = mu.count * 10 + mu.lastInput[mu.i];
-					mu.i++;
-				}
-				if (App->input->GetKeyDown(SDLK_2))
-				{
-					mu.lastInput[mu.i] = 2;
-					mu.count = mu.count * 10 + mu.lastInput[mu.i];
-					mu.i++;
-				}
-				if (App->input->GetKeyDown(SDLK_3))
-				{
-					mu.lastInput[mu.i] = 3;
-					mu.count = mu.count * 10 + mu.lastInput[mu.i];
-					mu.i++;
-				}
-				if (App->input->GetKeyDown(SDLK_4))
-				{
-					mu.lastInput[mu.i] = 4;
-					mu.count = mu.count * 10 + mu.lastInput[mu.i];
-					mu.i++;
-				}
-				if (App->input->GetKeyDown(SDLK_5))
-				{
-					mu.lastInput[mu.i] = 5;
-					mu.count = mu.count * 10 + mu.lastInput[mu.i];
-					mu.i++;
-				}
-				if (App->input->GetKeyDown(SDLK_6))
-				{
-					mu.lastInput[mu.i] = 6;
-					mu.count = mu.count * 10 + mu.lastInput[mu.i];
-					mu.i++;
-				}
-				if (App->input->GetKeyDown(SDLK_7))
-				{
-					mu.lastInput[mu.i] = 7;
-					mu.count = mu.count * 10 + mu.lastInput[mu.i];
-					mu.i++;
-				}
-				if (App->input->GetKeyDown(SDLK_8))
-				{
-					mu.lastInput[mu.i] = 8;
-					mu.count = mu.count * 10 + mu.lastInput[mu.i];
-					mu.i++;
-				}
-				if (App->input->GetKeyDown(SDLK_9))
-				{
-					mu.lastInput[mu.i] = 9;
-					mu.count = mu.count * 10 + mu.lastInput[mu.i];
-					mu.i++;
 				}
 			}
 			if (mu.count != 0)
@@ -1169,20 +1246,23 @@ bool j1Scene::PostUpdate()
 		sprintf_s(SideLength.count_string, 10, "%1d", SideLength.count);
 		App->fonts->BlitText(450, star_position[6] + 1, font, SideLength.count_string);
 
+		sprintf_s(density.count_string, 10, "%1d", density.count);
+		App->fonts->BlitText(450, star_position[7] + 1, font, density.count_string);
+
 		sprintf_s(fx0.count_string, 10, "%1d", fx0.count);
-		App->fonts->BlitText(450, star_position[7] + 1, font, fx0.count_string);
+		App->fonts->BlitText(450, star_position[8] + 1, font, fx0.count_string);
 
 		sprintf_s(fy0.count_string, 10, "%1d", fy0.count);
-		App->fonts->BlitText(450, star_position[8] + 1, font, fy0.count_string);
+		App->fonts->BlitText(450, star_position[9] + 1, font, fy0.count_string);
 
 		sprintf_s(mu.count_string, 10, "%1d", mu.count);
-		App->fonts->BlitText(450, star_position[9] + 1, font, mu.count_string);
+		App->fonts->BlitText(450, star_position[10] + 1, font, mu.count_string);
 
 		sprintf_s(collision.count_string, 10, "%1d", collision.count);
-		App->fonts->BlitText(450, star_position[10] + 1, font, collision.count_string);
+		App->fonts->BlitText(450, star_position[11] + 1, font, collision.count_string);
 
 		sprintf_s(time.count_string, 10, "%1d", time.count);
-		App->fonts->BlitText(450, star_position[11] + 1, font, time.count_string);
+		App->fonts->BlitText(450, star_position[12] + 1, font, time.count_string);
 	}
 	if (step == 5)
 	{ // FIRST COLUMN ---------------------------------------------------------------------
@@ -1207,20 +1287,23 @@ bool j1Scene::PostUpdate()
 		sprintf_s(SideLength.count_string, 10, "%1d", SideLength.count);
 		App->fonts->BlitText(450, star_position[6] + 1, font, SideLength.count_string);
 
+		sprintf_s(density.count_string, 10, "%1d", density.count);
+		App->fonts->BlitText(450, star_position[7] + 1, font, density.count_string);
+
 		sprintf_s(fx0.count_string, 10, "%1d", fx0.count);
-		App->fonts->BlitText(450, star_position[7] + 1, font, fx0.count_string);
+		App->fonts->BlitText(450, star_position[8] + 1, font, fx0.count_string);
 
 		sprintf_s(fy0.count_string, 10, "%1d", fy0.count);
-		App->fonts->BlitText(450, star_position[8] + 1, font, fy0.count_string);
+		App->fonts->BlitText(450, star_position[9] + 1, font, fy0.count_string);
 
 		sprintf_s(mu.count_string, 10, "%1d", mu.count);
-		App->fonts->BlitText(450, star_position[9] + 1, font, mu.count_string);
+		App->fonts->BlitText(450, star_position[10] + 1, font, mu.count_string);
 
 		sprintf_s(collision.count_string, 10, "%1d", collision.count);
-		App->fonts->BlitText(450, star_position[10] + 1, font, collision.count_string);
+		App->fonts->BlitText(450, star_position[11] + 1, font, collision.count_string);
 
 		sprintf_s(time.count_string, 10, "%1d", time.count);
-		App->fonts->BlitText(450, star_position[11] + 1, font, time.count_string);
+		App->fonts->BlitText(450, star_position[12] + 1, font, time.count_string);
 
 	  // SECOND COLUMN ---------------------------------------------------------------------
 		// INTEGRATOR
@@ -1250,16 +1333,16 @@ bool j1Scene::PostUpdate()
 		App->fonts->BlitText(760, star_position[9] - 8, font, y0.count_string);
 
 		sprintf_s(vx0.count_string, 10, "%1d", cube.getVX());
-		App->fonts->BlitText(760, star_position[10] - 24, font, vx0.count_string);
+		App->fonts->BlitText(760, star_position[10] - 8, font, vx0.count_string);
 
 		sprintf_s(vy0.count_string, 10, "%1d", cube.getVY());
-		App->fonts->BlitText(760, star_position[11] - 42, font, vy0.count_string);
+		App->fonts->BlitText(760, star_position[11] - 25, font, vy0.count_string);
 
 		sprintf_s(ax0.count_string, 10, "%1d", cube.getAX());
-		App->fonts->BlitText(760, star_position[11] - 10, font, ax0.count_string);
+		App->fonts->BlitText(760, star_position[12] - 41, font, ax0.count_string);
 
 		sprintf_s(ay0.count_string, 10, "%1d", cube.getAY());
-		App->fonts->BlitText(760, star_position[11] + 21, font, ay0.count_string);
+		App->fonts->BlitText(760, star_position[12] - 8, font, ay0.count_string);
 	}
 
 	if (App->input->GetKeyDown(SDLK_c))
@@ -1300,6 +1383,10 @@ bool j1Scene::PostUpdate()
 		SideLength.i = 0;
 		for (int i = 0; i < 10; i++) SideLength.lastInput[i] = 0;
 
+		density.count = 0;
+		density.i = 0;
+		for (int i = 0; i < 10; i++) density.lastInput[i] = 0;
+
 		mu.count = 0;
 		mu.i = 0;
 		for (int i = 0; i < 10; i++) mu.lastInput[i] = 0;
@@ -1312,6 +1399,7 @@ bool j1Scene::PostUpdate()
 		time.i = 0;
 		for (int i = 0; i < 10; i++) time.lastInput[i] = 0;
 	}
+
 	bool ret = true;
 	if (App->input->GetKeyDown(SDLK_ESCAPE))
 		ret = false;

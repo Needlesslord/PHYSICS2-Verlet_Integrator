@@ -38,14 +38,15 @@ public:
 	input vy0;					// currentInput = 4;
 	input ax0;					// currentInput = 5;
 	input ay0;					// currentInput = 6;
-	input SideLength;					// currentInput = 7;
-	input fx0;					// currentInput = 8;
-	input fy0;					// currentInput = 9;
-	input mu;					// currentInput = 10;
-	input collision;			// currentInput = 11;
-	input time;					// currentInput = 12;
+	input SideLength;			// currentInput = 7;
+	input density;				// currentInput = 8;
+	input fx0;					// currentInput = 9;
+	input fy0;					// currentInput = 10;
+	input mu;					// currentInput = 11;
+	input collision;			// currentInput = 12;
+	input time;					// currentInput = 13;
 
-	int star_position [12] = {137, 168, 199, 230, 261, 292, 323, 354, 385, 416, 464, 513};
+	int star_position [13] = {137, 168, 199, 230, 261, 292, 323, 354, 385, 416, 447, 495, 543 };
 	uint num_star;
 	bool first_time = true;
 	bool draw = false;
