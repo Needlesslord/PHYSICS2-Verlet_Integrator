@@ -26,6 +26,8 @@ public:
 	bool PostUpdate();
 	bool CleanUp();
 
+	void Draw(float x, float y);
+
 	uint step;
 	uint font;
 	uint currentInput = 1;
@@ -45,6 +47,9 @@ public:
 
 	int star_position [12] = {137, 168, 199, 230, 261, 292, 323, 354, 385, 416, 464, 513};
 	uint num_star;
+	bool first_time = true;
+	bool draw = false;
+	SDL_Rect quad;
 	
 private:
 	SDL_Texture* screen_0;
@@ -57,6 +62,11 @@ private:
 	SDL_Texture* star;
 
 	SDL_Texture* ball_tex;
+
+
+	SDL_Texture* objTex;
+	SDL_Rect objRect = { 0, 0, 406, 406 };
+
 };
 
 #endif // __j1SCENE_H__

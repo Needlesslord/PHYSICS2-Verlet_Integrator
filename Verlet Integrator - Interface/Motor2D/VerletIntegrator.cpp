@@ -2,6 +2,7 @@
 #include "j1App.h"
 #include "Globals.h"
 #include "j1Render.h"
+#include "j1Scene.h"
 
 //Constructor
 VerletIntegrator::VerletIntegrator() : j1Module()
@@ -313,9 +314,9 @@ void object::update(double time, object _object, double CR)
 		}
 
 		//Drawing Object if it has to
-		if (draw)
+		if (App->scene->draw)
 		{
-			App->render->Blit(objTex, new_x, new_y, &objRect);
+			App->scene->Draw(new_x, new_y);
 		}
 	}
 
