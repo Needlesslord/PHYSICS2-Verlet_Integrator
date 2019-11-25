@@ -1093,18 +1093,34 @@ bool j1Scene::Update(float dt)
 	else if (step == 5) // FINAL DATA
 	{
 		App->render->Blit(screen_5, 0, 0);
-
+		if (App->input->GetKeyDown(SDLK_1))
+		{
+			first_time = true;
+			step++;
+		}
 		if (App->input->GetKeyDown(SDLK_RETURN))
 		{
-			step++;
+			step = 0;
 		}
 		if (App->input->GetKeyDown(SDLK_b))
 		{
 			step -= 2;
 		}
 	}
-	else if (step == 6)
+	
+	else if (step == 6) // GRAPHICAL REPRESENTATION
 	{
+		if (first_time)
+		{
+			quad.h = quad.w = L.count;
+			quad.x = x0.count;
+			quad.y = 700 - quad.h - y0.count;
+			first_time = false;
+		}
+
+		App->render->DrawQuad(quad, 255, 255, 255);
+		// Run integrator
+
 		if (App->input->GetKeyDown(SDLK_b))
 		{
 			step--;
