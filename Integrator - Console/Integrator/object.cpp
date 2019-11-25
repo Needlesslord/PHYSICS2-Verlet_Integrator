@@ -115,7 +115,7 @@ void object::enterData()
 	std::cout << std::endl;
 
 	//radius
-	std::cout << "Enter a value for the sphere radius (m): ";
+	std::cout << "Enter a value for the edge of the cube (m): ";
 	std::cin >> edge_length;
 	std::cout << std::endl;
 	area = edge_length * edge_length;
