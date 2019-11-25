@@ -13,6 +13,7 @@
 
 #include "p2Defs.h"
 #include "p2Log.h"
+#include "Globals.h"
 #include "j1App.h"
 #include "j1Input.h"
 #include "j1Textures.h"
@@ -51,6 +52,7 @@ bool j1Scene::Start()
 	screen_3 = App->tex->Load("textures/3.png");
 	screen_4 = App->tex->Load("textures/4.png");
 	screen_5 = App->tex->Load("textures/5.png");
+	screen_6 = App->tex->Load("textures/6.png");
 
 	star = App->tex->Load("textures/star.png");
 	ball_tex = App->tex->Load("textures/ball.png");
@@ -1111,16 +1113,17 @@ bool j1Scene::Update(float dt)
 	
 	else if (step == 6) // GRAPHICAL REPRESENTATION
 	{
+		App->render->Blit(screen_6, 0, 0);
 		if (first_time)
 		{
 			quad.h = quad.w = L.count;
 			quad.x = x0.count;
-			quad.y = 700 - quad.h - y0.count;
+			quad.y = GROUND_POS - quad.h - y0.count;
 			first_time = false;
 		}
 
 		// Run integrator
-		//App->physics->Run();
+		App->physics->Update(dt);
 
 		if (App->input->GetKeyDown(SDLK_b))
 		{
@@ -1320,5 +1323,8 @@ bool j1Scene::CleanUp()
 
 void j1Scene::Draw(float x, float y)
 {
-	App->render->Blit(objTex, x, y, &objRect);
+	App->render->DrawQuad(quad, 255, 0, 0);
+
+	//Blit current x and y pos of the square
+
 }

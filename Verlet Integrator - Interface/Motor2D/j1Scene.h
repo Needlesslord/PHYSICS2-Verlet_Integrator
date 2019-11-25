@@ -58,6 +58,7 @@ private:
 	SDL_Texture* screen_3;
 	SDL_Texture* screen_4;
 	SDL_Texture* screen_5;
+	SDL_Texture* screen_6;
 
 	SDL_Texture* star;
 
