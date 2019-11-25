@@ -24,10 +24,14 @@ public:
 	void setFX(double _fx);
 
 	void setFY(double _fy);
+	
+	void setCD(double _cd);
 
-	void setRadius(double _radius);
+	void setSide(double _radius);
 
 	void setDensity(double _density);
+
+	void setElasticity(int _e);
 
 	double getX();
 
@@ -41,11 +45,13 @@ public:
 
 	double getAY();
 
-	double getRadius();
+	double getSide();
 
 	double getArea();
 
 	double getVolume();
+
+	double getCD();
 
 	double getDensity();
 
@@ -54,6 +60,8 @@ public:
 	double getFX();
 
 	double getFY();
+
+	double getElasticity();
 
 	double distanceTo(object _object);
 
@@ -79,9 +87,9 @@ private:
 	double ay = 0.0;
 
 	//object dimensions
-	double radius = 1.0;
-	double area = radius * radius * 3.14159265359;
-	double volume = 4.0 / 3.0 * 3.14159265359 * radius * radius * radius;
+	double side = 1.0;
+	double area = side * side;
+	double volume = side * side * side;
 
 	//mass
 	double density = 1000.0;

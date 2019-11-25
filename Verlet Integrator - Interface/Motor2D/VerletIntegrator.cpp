@@ -58,17 +58,29 @@ void object::setFY(double _fy)
 	fy = _fy;
 }
 
-//void object::setMu()
-
-void object::setRadius(double _radius)
+void object::setCD(double _cd)
 {
-	radius = _radius;
+	CD = _cd;
+}
+
+void object::setSide(double _side)
+{
+	side = _side;
+	area = side * side;
+	volume = side * side * side;
 }
 
 void object::setDensity(double _density)
 {
 	density = _density;
+	mass = volume * density;
 }
+
+void object::setElasticity(int _e)
+{
+	isElastic = _e;
+}
+
 
 //get
 
@@ -102,9 +114,9 @@ double object::getAY()
 	return ay;
 }
 
-double object::getRadius()
+double object::getSide()
 {
-	return radius;
+	return side;
 }
 
 double object::getArea()
@@ -115,6 +127,11 @@ double object::getArea()
 double object::getVolume()
 {
 	return volume;
+}
+
+double object::getCD()
+{
+	return CD;
 }
 
 double object::getDensity()
@@ -137,6 +154,11 @@ double object::getFY()
 	return fy;
 }
 
+double object::getElasticity()
+{
+	return isElastic;
+}
+
 double object::distanceTo(object _object)
 {
 	double distanceX = abs(new_x - _object.x);
@@ -149,7 +171,7 @@ double object::distanceTo(object _object)
 
 bool object::checkCollission(object _object)
 {
-	if (distanceTo(_object) <= radius + _object.radius)
+	if (distanceTo(_object) <= side + _object.side)
 		return true;
 	else
 		return false;
@@ -217,12 +239,12 @@ void object::update(double time, object _object, double CR)
 
 
 		//Solving ground collision
-		if (new_y < radius && !isElastic)
+		if (new_y < side && !isElastic)
 		{
-			new_y = radius;
+			new_y = side;
 			new_vy = 0.0;
 		}
-		else if (new_y < radius && isElastic)
+		else if (new_y < side && isElastic)
 		{
 			new_vy = -new_vy;
 		}
@@ -239,7 +261,7 @@ void object::update(double time, object _object, double CR)
 			checkCollisionAgain = false;
 		}
 
-		if (distanceTo(_object) > radius + _object.radius)
+		if (distanceTo(_object) > side + _object.side)
 			checkCollisionAgain = true;
 
 		//Results
