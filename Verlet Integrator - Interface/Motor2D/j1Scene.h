@@ -48,6 +48,7 @@ public:
 	int star_position [12] = {137, 168, 199, 230, 261, 292, 323, 354, 385, 416, 464, 513};
 	uint num_star;
 	bool first_time = true;
+	bool draw = false;
 	SDL_Rect quad;
 	
 private:
@@ -61,6 +62,10 @@ private:
 	SDL_Texture* star;
 
 	SDL_Texture* ball_tex;
+
+
+	SDL_Texture* objTex;
+	SDL_Rect objRect = { 0, 0, 406, 406 };
 
 };
 
