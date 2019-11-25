@@ -21,11 +21,13 @@ public:
 
 	void setAY(double _ay);
 
+	void setFX(double _fx);
+
+	void setFY(double _fy);
+
 	void setRadius(double _radius);
 
 	void setDensity(double _density);
-
-	void enterData();
 
 	double getX();
 

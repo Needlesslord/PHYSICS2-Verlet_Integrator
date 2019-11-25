@@ -38,7 +38,7 @@ public:
 	input vy0;					// currentInput = 4;
 	input ax0;					// currentInput = 5;
 	input ay0;					// currentInput = 6;
-	input L;					// currentInput = 7;
+	input SideLength;					// currentInput = 7;
 	input fx0;					// currentInput = 8;
 	input fy0;					// currentInput = 9;
 	input mu;					// currentInput = 10;

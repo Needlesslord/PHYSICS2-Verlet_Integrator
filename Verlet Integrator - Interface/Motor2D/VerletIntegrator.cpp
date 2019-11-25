@@ -47,6 +47,18 @@ void object::setAY(double _ay)
 	ay = _ay;
 }
 
+void object::setFX(double _fx)
+{
+	fx = _fx;
+}
+
+void object::setFY(double _fy)
+{
+	fy = _fy;
+}
+
+//void object::setMu()
+
 void object::setRadius(double _radius)
 {
 	radius = _radius;
@@ -55,69 +67,6 @@ void object::setRadius(double _radius)
 void object::setDensity(double _density)
 {
 	density = _density;
-}
-
-void object::enterData()
-{
-	//x
-	std::cout << "Enter a value for initial X position (m): ";
-	std::cin >> x;
-	std::cout << std::endl;
-
-	//y
-	std::cout << "Enter a value for initial Y position (m): ";
-	std::cin >> y;
-	std::cout << std::endl;
-
-
-	//vx
-	std::cout << "Enter a value for initial X velocity (m/s): ";
-	std::cin >> vx;
-	std::cout << std::endl;
-
-	//vy
-	std::cout << "Enter a value for initial Y velocity (m/s): ";
-	std::cin >> vy;
-	std::cout << std::endl;
-
-	//ax
-	std::cout << "Enter a value for initial X acceleration (m/s^2): ";
-	std::cin >> ax;
-	std::cout << std::endl;
-
-	//ay
-	std::cout << "Enter a value for initial Y acceleration (m/s^2): ";
-	std::cin >> ay;
-	std::cout << std::endl;
-
-	//radius
-	std::cout << "Enter a value for the sphere radius (m): ";
-	std::cin >> radius;
-	std::cout << std::endl;
-	area = radius * radius * 3.14159265359;
-	volume = 4.0 / 3.0 * 3.14159265359 * radius * radius * radius;
-
-	//density
-	std::cout << "Enter a value for the density of the object (kg/m^3): ";
-	std::cin >> density;
-	std::cout << std::endl;
-	mass = volume * density;
-
-	//elasticity
-	int e = 0;
-	while (e == 0) {
-		std::cout << "Enter a value for the coefficient of elasticity (0 for inelastic collision and 1 for elastic collision): ";
-		std::cin >> isElastic;
-		std::cout << std::endl;
-		if (isElastic != 0 && isElastic != 1) {
-			isElastic = 0;
-
-		}
-		else {
-			e = 1;
-		}
-	}
-
 }
 
 //get
@@ -365,7 +314,7 @@ void object::Restart()		//Funcio per acabar la representacio
 	{
 		std::cout << std::endl;
 
-		enterData();
+		//enterData();
 
 		//Adaptar a la interface
 		std::cout << "How many seconds will the simulation last? ";
