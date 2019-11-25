@@ -13,6 +13,7 @@
 
 #include "p2Defs.h"
 #include "p2Log.h"
+#include "Globals.h"
 #include "j1App.h"
 #include "j1Input.h"
 #include "j1Textures.h"
@@ -51,10 +52,11 @@ bool j1Scene::Start()
 	screen_3 = App->tex->Load("textures/3.png");
 	screen_4 = App->tex->Load("textures/4.png");
 	screen_5 = App->tex->Load("textures/5.png");
+	screen_6 = App->tex->Load("textures/6.png");
 
 	star = App->tex->Load("textures/star.png");
-
 	ball_tex = App->tex->Load("textures/ball.png");
+	objTex = App->tex->Load("textures/Square.png");
 	font = App->fonts->Load("textures/Fonts_Numbers.png", "0123456789", 1);
 	step = 2;
 	num_star = 0;
@@ -1105,6 +1107,7 @@ bool j1Scene::Update(float dt)
 		if (App->input->GetKeyDown(SDLK_1))
 		{
 			first_time = true;
+			draw = true;
 			step++;
 		}
 		if (App->input->GetKeyDown(SDLK_RETURN))
@@ -1119,20 +1122,22 @@ bool j1Scene::Update(float dt)
 	
 	else if (step == 6) // GRAPHICAL REPRESENTATION
 	{
+		App->render->Blit(screen_6, 0, 0);
 		if (first_time)
 		{
 			quad.h = quad.w = SideLength.count;
 			quad.x = x0.count;
-			quad.y = 700 - quad.h - y0.count;
+			quad.y = GROUND_POS - quad.h - y0.count;
 			first_time = false;
 		}
 
-		App->render->DrawQuad(quad, 255, 255, 255);
 		// Run integrator
+		App->physics->Update(dt);
 
 		if (App->input->GetKeyDown(SDLK_b))
 		{
 			step--;
+			draw = false;
 		}
 	}
 	return true;
@@ -1320,6 +1325,15 @@ bool j1Scene::CleanUp()
 	LOG("Freeing scene");
 	App->tex->UnLoad(screen_0);
 	App->tex->UnLoad(ball_tex);
+	App->tex->UnLoad(objTex);
 	App->fonts->UnLoad(font);
 	return true;
+}
+
+void j1Scene::Draw(float x, float y)
+{
+	App->render->DrawQuad(quad, 255, 0, 0);
+
+	//Blit current x and y pos of the square
+
 }
