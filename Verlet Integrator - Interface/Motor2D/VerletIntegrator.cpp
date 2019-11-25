@@ -254,7 +254,6 @@ void object::update(double time, object _object, double CR)
 
 		if (checkCollission(_object) == true && checkCollisionAgain == true)
 		{
-			std::cout << "Collision!" << std::endl;
 			new_vx = ((CR * _object.mass * (_object.vx - new_vx) + mass * new_vx + _object.mass * _object.vx) / (mass + _object.mass));
 			new_vy = ((CR * _object.mass * (_object.vy - new_vy) + mass * new_vy + _object.mass * _object.vy) / (mass + _object.mass));
 
@@ -272,16 +271,10 @@ void object::update(double time, object _object, double CR)
 
 		if (frame == 1)
 		{
-			std::cout << "Second: " << second - 1 << "   Frame: " << secondFrame + 1 << "   Total Frame: " << frame << std::endl;
-			std::cout << "x: " << x << "  vx: " << vx << "  ax: " << ax << std::endl;
-			std::cout << "y: " << y << "  vy: " << vy << "  ay: " << ay << std::endl << std::endl;
 		}
 		else
 		{
-			std::cout << "Second: " << second - 1 << "   Frame: " << secondFrame + 1 << "   Total Frame: " << frame << std::endl;
-			std::cout << "x: " << new_x << "  vx: " << new_vx << "  ax: " << new_ax << std::endl;
-			std::cout << "y: " << new_y << "  vy: " << new_vy << "  ay: " << new_ay << std::endl << std::endl;
-			std::cout << "distance to obect: " << distanceTo(_object) << std::endl;
+
 		}
 
 		//Drawing Object if it has to
@@ -291,7 +284,7 @@ void object::update(double time, object _object, double CR)
 		}
 	}
 
-	Restart(); //Menu Restart al acabar la representacio
+	//Restart(); //Menu Restart al acabar la representacio
 }
 
 void object::NewtonsLawsMRUA() //Codi amb els calculs segons les lleis de Newton
@@ -309,9 +302,7 @@ void object::NewtonsLawsMRUA() //Codi amb els calculs segons les lleis de Newton
 	new_y = y + vy * dt + (new_ay / 2.0) * dt * dt;
 
 	//Adaptar a la interface
-	std::cout << "NEWTON'S RESULTS" << std::endl << std::endl;
-	std::cout << "x: " << new_x << "  vx: " << new_vx << "  ax: " << new_ax << std::endl;
-	std::cout << "y: " << new_y << "  vy: " << new_vy << "  ay: " << new_ay << std::endl << std::endl;
+
 	//Adaptar a la interface
 
 	Restart();
@@ -319,40 +310,34 @@ void object::NewtonsLawsMRUA() //Codi amb els calculs segons les lleis de Newton
 
 void object::Restart()		//Funcio per acabar la representacio
 {
-	int restart;
-	double time;
-	object _object;
-	draw = false;
+	//int restart;
+	//double time;
+	//object _object;
+	//draw = false;
 
-	//Adaptar a la interface
-	std::cout << std::endl;
-	std::cout << "Enter '1' if you want to compare the results with Newton's laws" << std::endl;
-	std::cout << "Enter '2' if you want to restart the whole process" << std::endl;
-	std::cout << "Enter another number if you want to exit" << std::endl << std::endl;
+	////Adaptar a la interface
+	//
 
-	std::cin >> restart;		//rep valor de "restart"
-	//Adaptar a la interface
+	//std::cin >> restart;		//rep valor de "restart"
+	////Adaptar a la interface
 
-	if (restart == 1)			//Si es "1" aplicar newton
-	{
-		NewtonsLawsMRUA();
-	}
-	else if (restart == 2)		//Si es "2" restart
-	{
-		std::cout << std::endl;
+	//if (restart == 1)			//Si es "1" aplicar newton
+	//{
+	//	NewtonsLawsMRUA();
+	//}
+	//else if (restart == 2)		//Si es "2" restart
+	//{
 
-		//enterData();
+	//	//enterData();
 
-		//Adaptar a la interface
-		std::cout << "How many seconds will the simulation last? ";
-		std::cin >> time;
-		std::cout << std::endl;
-		//Adaptar a la interface
+	//	//Adaptar a la interface
+	//	std::cin >> time;
+	//	//Adaptar a la interface
 
-		update(time, _object, 1);
-	}
-	else						//Exit
-	{
-		system("pause");
-	}
+	//	update(time, _object, 1);
+	//}
+	//else						//Exit
+	//{
+	//	system("pause");
+	//}
 }

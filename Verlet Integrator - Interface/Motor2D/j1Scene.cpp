@@ -25,6 +25,7 @@
 #include "VerletIntegrator.h"
 
 object cube;
+object obstacle;
 
 j1Scene::j1Scene() : j1Module()
 {
@@ -57,9 +58,19 @@ bool j1Scene::Start()
 	star = App->tex->Load("textures/star.png");
 	ball_tex = App->tex->Load("textures/ball.png");
 	objTex = App->tex->Load("textures/Square.png");
-	font = App->fonts->Load("textures/Fonts_Numbers.png", "0123456789", 1);
+	font = App->fonts->Load("textures/Fonts_Numbers.png", "0123456789.", 1);
 	step = 2;
 	num_star = 0;
+
+	//obstacle
+	obstacle.setX(5.0);
+	obstacle.setY(0.0);
+	obstacle.setAX(0.0);
+	obstacle.setAY(0.0);
+	obstacle.setVX(0.0);
+	obstacle.setVY(0.0);
+	obstacle.setDensity(HUGE_VAL);
+
 	return true;
 }
 
@@ -119,19 +130,19 @@ bool j1Scene::Update(float dt)
 			currentInput = 1;
 
 			// ENTER DATA
-			cube.setX(x0.count);
-			cube.setY(y0.count);
-			cube.setVX(vx0.count);
-			cube.setVY(vy0.count);
-			cube.setAX(ax0.count);
-			cube.setAY(ay0.count);
-			/*
-			cube.setL(L.count);
-			cube.setFX(fx0.count);
-			cube.setFY(fy0.count);
-			cube.setMu(mu.count);
-			cube.setCollision(collision.count);
-			cube.setT(time.count);*/
+			cube.setX(x0.count);				// 1
+			cube.setY(y0.count);				// 2
+			cube.setVX(vx0.count);				// 3
+			cube.setVY(vy0.count);				// 4
+			cube.setAX(ax0.count);				// 5
+			cube.setAY(ay0.count);				// 6
+			cube.setSide(SideLength.count);		// 7
+			cube.setDensity(density.count);		// 8
+			cube.setFX(fx0.count);				// 9
+			cube.setFY(fy0.count);				// 10
+			cube.setCD(mu.count);				// 11
+			cube.setElasticity(collision.count);// 12
+
 			return true;
 		}
 		else if (App->input->GetKeyDown(SDLK_b))
@@ -1128,13 +1139,13 @@ bool j1Scene::Update(float dt)
 					time.i++;
 				}
 			}
-			if (mu.count != 0)
+			if (time.count != 0)
 			{
 				if (App->input->GetKeyDown(SDLK_BACKSPACE))
 				{
-					mu.i--;
-					mu.count = mu.count - mu.lastInput[mu.i];
-					mu.count = mu.count / 10;
+					time.i--;
+					time.count = time.count - time.lastInput[time.i];
+					time.count = time.count / 10;
 				}
 			}
 		}
@@ -1146,19 +1157,12 @@ bool j1Scene::Update(float dt)
 		if (App->input->GetKeyDown(SDLK_1))
 		{
 			step++;
+			cube.update(time.count, obstacle, 1);
 		}
 		else if (App->input->GetKeyDown(SDLK_2))
 		{
 			step += 2;
-			cube.setX(x0.count);
-			cube.setY(y0.count);
-			cube.setVX(vx0.count);
-			cube.setVY(vy0.count);
-			cube.setAX(ax0.count);
-			cube.setAY(ay0.count);
-			//cube.setSideLength(SideLength.count);
-			cube.setFX(fx0.count);
-			cube.setFY(fy0.count);
+			cube.update(time.count, obstacle, 1);
 		}
 		else if (App->input->GetKeyDown(SDLK_b))
 		{
@@ -1307,22 +1311,22 @@ bool j1Scene::PostUpdate()
 
 	  // SECOND COLUMN ---------------------------------------------------------------------
 		// INTEGRATOR
-		sprintf_s(x0.count_string, 10, "%1d", cube.getX());
+		sprintf_s(x0.count_string, 10, "%1d", cube.getX());								// 1
 		App->fonts->BlitText(760, star_position[1] - 6, font, x0.count_string);
 
-		sprintf_s(y0.count_string, 10, "%1d", cube.getY());
+		sprintf_s(y0.count_string, 10, "%1d", cube.getY());								// 2
 		App->fonts->BlitText(760, star_position[2] - 6, font, y0.count_string);
 
-		sprintf_s(vx0.count_string, 10, "%1d", cube.getVX());
+		sprintf_s(vx0.count_string, 10, "%1d", cube.getVX());							// 3
 		App->fonts->BlitText(760, star_position[3] - 6, font, vx0.count_string);
 
-		sprintf_s(vy0.count_string, 10, "%1d", cube.getVY());
+		sprintf_s(vy0.count_string, 10, "%1d", cube.getVY());							// 4
 		App->fonts->BlitText(760, star_position[4] - 6, font, vy0.count_string);
 
-		sprintf_s(ax0.count_string, 10, "%1d", cube.getAX());
+		sprintf_s(ax0.count_string, 10, "%1d", cube.getAX());							// 5
 		App->fonts->BlitText(760, star_position[5] - 6, font, ax0.count_string);
 
-		sprintf_s(ay0.count_string, 10, "%1d", cube.getAY());
+		sprintf_s(ay0.count_string, 10, "%1d", cube.getAY());							// 6
 		App->fonts->BlitText(760, star_position[6] - 6, font, ay0.count_string);
 
 		// NEWTON'S LAWS
