@@ -313,7 +313,10 @@ void object::update(double time, object _object, double CR)
 		}
 
 		//Drawing Object if it has to
-		//App->render->Blit(objTex, new_x, new_y, &objRect);
+		if (draw)
+		{
+			App->render->Blit(objTex, new_x, new_y, &objRect);
+		}
 	}
 
 	Restart(); //Menu Restart al acabar la representacio
@@ -347,6 +350,7 @@ void object::Restart()		//Funcio per acabar la representacio
 	int restart;
 	double time;
 	object _object;
+	draw = false;
 
 	//Adaptar a la interface
 	std::cout << std::endl;
