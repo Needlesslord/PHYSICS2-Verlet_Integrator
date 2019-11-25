@@ -2,6 +2,8 @@
 #define __VERLETINTEGRATOR_H__
 
 #include "j1Module.h"
+#include "j1Textures.h"
+#include "SDL/include/SDL.h"
 #include <iostream>
 
 class object //sphere
@@ -86,6 +88,9 @@ private:
 	//drag coefficient
 	double CD = 0.47;
 
+	//elasticity
+	int isElastic = 0;
+
 	//forces
 	double fx = 0.0;
 	double fy = 0.0;
@@ -100,6 +105,10 @@ private:
 
 	//time
 	double dt;
+
+	//Texture
+	//SDL_Texture* objTex;
+	//SDL_Rect objRect = { 0, 0, 406, 406 };
 };
 
 
@@ -111,6 +120,7 @@ public:
 
 	// Destructor
 	virtual ~VerletIntegrator();
+	
 };
 
 #endif // __VERLETINTEGRATOR_H__

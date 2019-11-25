@@ -136,6 +136,21 @@ void object::enterData()
 	std::cin >> initial_fy;
 	std::cout << std::endl;
 
+	//elasticity
+	int e = 0;
+	while (e == 0) {
+		std::cout << "Enter a value for the coefficient of elasticity (0 for inelastic collision and 1 for elastic collision): ";
+		std::cin >> isElastic;
+		std::cout << std::endl;
+		if (isElastic != 0 && isElastic != 1) {
+			isElastic = 0;
+
+		}
+		else {
+			e = 1;
+		}
+	}
+
 	//coefficient of friction
 	int i = 0;
 	while (i == 0) {
@@ -318,10 +333,14 @@ void object::update(double time, object _object, double CR)
 		new_y = y + vy * dt + (new_ay / 2.0) * dt * dt;
 
 		//Solving ground collision
-		if (new_y < edge_length)
+		if (new_y < edge_length && !isElastic)
 		{
 			new_y = edge_length;
 			new_vy = 0.0;
+		}
+		else if (new_y < edge_length && isElastic)
+		{
+			new_vy = -new_vy;
 		}
 
 		//Collision

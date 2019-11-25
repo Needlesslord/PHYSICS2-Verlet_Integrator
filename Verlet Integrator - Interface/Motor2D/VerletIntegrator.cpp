@@ -1,7 +1,7 @@
 #include "VerletIntegrator.h"
 #include "j1App.h"
 #include "Globals.h"
-
+#include "j1Render.h"
 
 //Constructor
 VerletIntegrator::VerletIntegrator() : j1Module()
@@ -102,6 +102,21 @@ void object::enterData()
 	std::cin >> density;
 	std::cout << std::endl;
 	mass = volume * density;
+
+	//elasticity
+	int e = 0;
+	while (e == 0) {
+		std::cout << "Enter a value for the coefficient of elasticity (0 for inelastic collision and 1 for elastic collision): ";
+		std::cin >> isElastic;
+		std::cout << std::endl;
+		if (isElastic != 0 && isElastic != 1) {
+			isElastic = 0;
+
+		}
+		else {
+			e = 1;
+		}
+	}
 
 }
 
@@ -252,10 +267,14 @@ void object::update(double time, object _object, double CR)
 
 
 		//Solving ground collision
-		if (new_y < radius)
+		if (new_y < radius && !isElastic)
 		{
 			new_y = radius;
 			new_vy = 0.0;
+		}
+		else if (new_y < radius && isElastic)
+		{
+			new_vy = -new_vy;
 		}
 
 
@@ -292,6 +311,9 @@ void object::update(double time, object _object, double CR)
 			std::cout << "y: " << new_y << "  vy: " << new_vy << "  ay: " << new_ay << std::endl << std::endl;
 			std::cout << "distance to obect: " << distanceTo(_object) << std::endl;
 		}
+
+		//Drawing Object if it has to
+		//App->render->Blit(objTex, new_x, new_y, &objRect);
 	}
 
 	Restart(); //Menu Restart al acabar la representacio
