@@ -199,7 +199,7 @@ bool j1Scene::Update(float dt)
 
 		if (App->input->GetKeyDown(SDLK_RETURN))
 		{
-			step++;
+			step = 1;
 		}
 		else if (App->input->GetKeyDown(SDLK_b))
 		{
@@ -216,7 +216,7 @@ bool j1Scene::Update(float dt)
 		}
 		else if (App->input->GetKeyDown(SDLK_b))
 		{
-			step -= 2;
+			step = 1;
 		}
 	}
 	if (step > 5)step = 5;
