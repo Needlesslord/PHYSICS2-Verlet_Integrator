@@ -1118,41 +1118,118 @@ bool j1Scene::PostUpdate()
 {
 	if (step == 2)
 	{ // x0
-	sprintf_s(x0.count_string, 10, "%1d", x0.count);
-	App->fonts->BlitText(450, star_position[0] + 1, font, x0.count_string);
+		sprintf_s(x0.count_string, 10, "%1d", x0.count);
+		App->fonts->BlitText(450, star_position[0] + 1, font, x0.count_string);
 
-	sprintf_s(y0.count_string, 10, "%1d", y0.count);
-	App->fonts->BlitText(450, star_position[1] + 1, font, y0.count_string);
+		sprintf_s(y0.count_string, 10, "%1d", y0.count);
+		App->fonts->BlitText(450, star_position[1] + 1, font, y0.count_string);
 
-	sprintf_s(vx0.count_string, 10, "%1d", vx0.count);
-	App->fonts->BlitText(450, star_position[2] + 1, font, vx0.count_string);
-	
-	sprintf_s(vy0.count_string, 10, "%1d", vy0.count);
-	App->fonts->BlitText(450, star_position[3] + 1, font, vy0.count_string);
+		sprintf_s(vx0.count_string, 10, "%1d", vx0.count);
+		App->fonts->BlitText(450, star_position[2] + 1, font, vx0.count_string);
 
-	sprintf_s(ax0.count_string, 10, "%1d", ax0.count);
-	App->fonts->BlitText(450, star_position[4] + 1, font, ax0.count_string);
+		sprintf_s(vy0.count_string, 10, "%1d", vy0.count);
+		App->fonts->BlitText(450, star_position[3] + 1, font, vy0.count_string);
 
-	sprintf_s(ay0.count_string, 10, "%1d", ay0.count);
-	App->fonts->BlitText(450, star_position[5] + 1, font, ay0.count_string);
+		sprintf_s(ax0.count_string, 10, "%1d", ax0.count);
+		App->fonts->BlitText(450, star_position[4] + 1, font, ax0.count_string);
 
-	sprintf_s(L.count_string, 10, "%1d", L.count);
-	App->fonts->BlitText(450, star_position[6] + 1, font, L.count_string);
+		sprintf_s(ay0.count_string, 10, "%1d", ay0.count);
+		App->fonts->BlitText(450, star_position[5] + 1, font, ay0.count_string);
 
-	sprintf_s(fx0.count_string, 10, "%1d", fx0.count);
-	App->fonts->BlitText(450, star_position[7] + 1, font, fx0.count_string);
+		sprintf_s(L.count_string, 10, "%1d", L.count);
+		App->fonts->BlitText(450, star_position[6] + 1, font, L.count_string);
 
-	sprintf_s(fy0.count_string, 10, "%1d", fy0.count);
-	App->fonts->BlitText(450, star_position[8] + 1, font, fy0.count_string);
+		sprintf_s(fx0.count_string, 10, "%1d", fx0.count);
+		App->fonts->BlitText(450, star_position[7] + 1, font, fx0.count_string);
 
-	sprintf_s(mu.count_string, 10, "%1d", mu.count);
-	App->fonts->BlitText(450, star_position[9] + 1, font, mu.count_string);
+		sprintf_s(fy0.count_string, 10, "%1d", fy0.count);
+		App->fonts->BlitText(450, star_position[8] + 1, font, fy0.count_string);
 
-	sprintf_s(collision.count_string, 10, "%1d", collision.count);
-	App->fonts->BlitText(450, star_position[10] + 1, font, collision.count_string);
+		sprintf_s(mu.count_string, 10, "%1d", mu.count);
+		App->fonts->BlitText(450, star_position[9] + 1, font, mu.count_string);
 
-	sprintf_s(time.count_string, 10, "%1d", time.count);
-	App->fonts->BlitText(450, star_position[11] + 1, font, time.count_string);
+		sprintf_s(collision.count_string, 10, "%1d", collision.count);
+		App->fonts->BlitText(450, star_position[10] + 1, font, collision.count_string);
+
+		sprintf_s(time.count_string, 10, "%1d", time.count);
+		App->fonts->BlitText(450, star_position[11] + 1, font, time.count_string);
+	}
+	if (step == 5)
+	{ // FIRST COLUMN ---------------------------------------------------------------------
+		sprintf_s(x0.count_string, 10, "%1d", x0.count);
+		App->fonts->BlitText(450, star_position[0] + 1, font, x0.count_string);
+
+		sprintf_s(y0.count_string, 10, "%1d", y0.count);
+		App->fonts->BlitText(450, star_position[1] + 1, font, y0.count_string);
+
+		sprintf_s(vx0.count_string, 10, "%1d", vx0.count);
+		App->fonts->BlitText(450, star_position[2] + 1, font, vx0.count_string);
+
+		sprintf_s(vy0.count_string, 10, "%1d", vy0.count);
+		App->fonts->BlitText(450, star_position[3] + 1, font, vy0.count_string);
+
+		sprintf_s(ax0.count_string, 10, "%1d", ax0.count);
+		App->fonts->BlitText(450, star_position[4] + 1, font, ax0.count_string);
+
+		sprintf_s(ay0.count_string, 10, "%1d", ay0.count);
+		App->fonts->BlitText(450, star_position[5] + 1, font, ay0.count_string);
+
+		sprintf_s(L.count_string, 10, "%1d", L.count);
+		App->fonts->BlitText(450, star_position[6] + 1, font, L.count_string);
+
+		sprintf_s(fx0.count_string, 10, "%1d", fx0.count);
+		App->fonts->BlitText(450, star_position[7] + 1, font, fx0.count_string);
+
+		sprintf_s(fy0.count_string, 10, "%1d", fy0.count);
+		App->fonts->BlitText(450, star_position[8] + 1, font, fy0.count_string);
+
+		sprintf_s(mu.count_string, 10, "%1d", mu.count);
+		App->fonts->BlitText(450, star_position[9] + 1, font, mu.count_string);
+
+		sprintf_s(collision.count_string, 10, "%1d", collision.count);
+		App->fonts->BlitText(450, star_position[10] + 1, font, collision.count_string);
+
+		sprintf_s(time.count_string, 10, "%1d", time.count);
+		App->fonts->BlitText(450, star_position[11] + 1, font, time.count_string);
+
+	  // SECOND COLUMN ---------------------------------------------------------------------
+		// INTEGRATOR
+		sprintf_s(x0.count_string, 10, "%1d", cube.getX());
+		App->fonts->BlitText(760, star_position[1] - 6, font, x0.count_string);
+
+		sprintf_s(y0.count_string, 10, "%1d", cube.getY());
+		App->fonts->BlitText(760, star_position[2] - 6, font, y0.count_string);
+
+		sprintf_s(vx0.count_string, 10, "%1d", cube.getVX());
+		App->fonts->BlitText(760, star_position[3] - 6, font, vx0.count_string);
+
+		sprintf_s(vy0.count_string, 10, "%1d", cube.getVY());
+		App->fonts->BlitText(760, star_position[4] - 6, font, vy0.count_string);
+
+		sprintf_s(ax0.count_string, 10, "%1d", cube.getAX());
+		App->fonts->BlitText(760, star_position[5] - 6, font, ax0.count_string);
+
+		sprintf_s(ay0.count_string, 10, "%1d", cube.getAY());
+		App->fonts->BlitText(760, star_position[6] - 6, font, ay0.count_string);
+
+		// NEWTON'S LAWS
+		sprintf_s(x0.count_string, 10, "%1d", cube.getX());
+		App->fonts->BlitText(760, star_position[8] - 8, font, x0.count_string);
+
+		sprintf_s(y0.count_string, 10, "%1d", cube.getY());
+		App->fonts->BlitText(760, star_position[9] - 8, font, y0.count_string);
+
+		sprintf_s(vx0.count_string, 10, "%1d", cube.getVX());
+		App->fonts->BlitText(760, star_position[10] - 24, font, vx0.count_string);
+
+		sprintf_s(vy0.count_string, 10, "%1d", cube.getVY());
+		App->fonts->BlitText(760, star_position[11] - 42, font, vy0.count_string);
+
+		sprintf_s(ax0.count_string, 10, "%1d", cube.getAX());
+		App->fonts->BlitText(760, star_position[11] - 10, font, ax0.count_string);
+
+		sprintf_s(ay0.count_string, 10, "%1d", cube.getAY());
+		App->fonts->BlitText(760, star_position[11] + 21, font, ay0.count_string);
 	}
 
 	if (App->input->GetKeyDown(SDLK_c))
