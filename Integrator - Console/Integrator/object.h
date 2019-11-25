@@ -57,6 +57,7 @@ public:
 	void NewtonsLawsMRUA();
 
 	void Restart();
+	void Options();
 
 private:
 	//position

@@ -84,6 +84,34 @@ void object::setDensity(double _density)
 
 void object::enterData()
 {
+
+	// WELCOME
+	std::cout << "- - - - - - Welcome to the Verlet Integrator - - - - - - " << std::endl;
+	std::cout << "This Integrator has been developed by:" << std::endl;
+	std::cout << "          Tomás Carreras" << std::endl;
+	std::cout << "          Enric-G. Durán" << std::endl;
+	std::cout << "          Marc Garcia" << std::endl;
+	std::cout << "          Núria Lamonja (Team Leader)" << std::endl;
+	std::cout << "          Alex Lopez" << std::endl;
+	std::cout << "          Raul Morente" << std::endl;
+	std::cout << "          Albert Robles" << std::endl;
+	std::cout << "We would like to thank David de la Torre, who has helped with this project and given us kind advice." << std::endl;
+	std::cout << "This project has been done for CITM-TTC under the MIT License." << std::endl;
+	Options();
+
+	// TUTORIAL
+	std::cout << "- - - - - - How this code works - - - - - -  " << std::endl;
+	std::cout << "Instructions will be shown all the time. " << std::endl;
+	std::cout << "          The first step is to INPUT THE DATA:  " << std::endl;
+	std::cout << "Use the numbers to input the data you are being asked for and press RETURN once you have finished writing." << std::endl;
+	std::cout << "You will be asked for the initial data: position x and y, speed vx and vy, acceleration ax and ay, a radius, a density and elapsed time. Also forces in the x and y axis and a coefficient of friction and elasticity can be added. " << std::endl;
+	std::cout << "Afterwards the simulation will start, and each frame will be printed." << std::endl;
+	Options();
+
+
+	// DATA INPUT
+	std::cout << "- - - - - - Initial Data Input - - - - - - " << std::endl;
+
 	//x
 	std::cout << "Enter a value for initial X position (m): ";
 	std::cin >> x;
@@ -115,15 +143,23 @@ void object::enterData()
 	std::cout << std::endl;
 
 	//radius
-	std::cout << "Enter a value for the edge of the cube (m): ";
+	std::cout << "Enter a value for the edge of the cube (must be larger that 0, otherwise it will be set to 1) (m): ";
 	std::cin >> edge_length;
+	if (edge_length <= 0)
+	{
+		edge_length = 1;
+	}
 	std::cout << std::endl;
 	area = edge_length * edge_length;
 	volume = edge_length * edge_length * edge_length;
 
 	//density
-	std::cout << "Enter a value for the density of the object (kg/m^3): ";
+	std::cout << "Enter a value for the density of the object (must be larger that 0, otherwise it will be set to 1) (kg/m^3): ";
 	std::cin >> density;
+	if (density <= 0)
+	{
+		density = 1;
+	}
 	std::cout << std::endl;
 	mass = volume * density;
 
@@ -139,7 +175,7 @@ void object::enterData()
 	//elasticity
 	int e = 0;
 	while (e == 0) {
-		std::cout << "Enter a value for the coefficient of elasticity (0 for inelastic collision and 1 for elastic collision): ";
+		std::cout << "Enter a value for the coefficient of elasticity (0 for inelastic collision and 1 for elastic collision, otherwise it will be set to 1): ";
 		std::cin >> isElastic;
 		std::cout << std::endl;
 		if (isElastic != 0 && isElastic != 1) {
@@ -154,7 +190,7 @@ void object::enterData()
 	//coefficient of friction
 	int i = 0;
 	while (i == 0) {
-		std::cout << "Enter a value for the coefficient of friction(value should range between 0 and 1): ";
+		std::cout << "Enter a value for the coefficient of friction(value should range between 0 and 1, otherwise it will be set to 0): ";
 		std::cin >> CF;
 		std::cout << std::endl;
 		if (CF >= 0 && CF <= 1) {
@@ -163,6 +199,7 @@ void object::enterData()
 
 		}
 		else {
+			ff = 0;
 			std::cout << "Wrong value introduced." << std::endl;
 			std::cout << std::endl;
 		}
@@ -412,7 +449,7 @@ void object::Restart()
 	std::cout << std::endl;
 	std::cout << "Enter '1' if you want to compare the results with Newton's laws" << std::endl;
 	std::cout << "Enter '2' if you want to restart the whole process" << std::endl;
-	std::cout << "Enter another number if you want to exit" << std::endl << std::endl;
+	std::cout << "Enter another key if you want to exit" << std::endl << std::endl;
 
 	std::cin >> restart;
 
@@ -435,5 +472,29 @@ void object::Restart()
 	else 
 	{
 	system("pause");
+	}
+}
+
+void object::Options()
+{
+	int restart;
+	double time;
+	object obstacle;
+
+	std::cout << std::endl;
+	std::cout << "Enter '1' if you want to continue" << std::endl;
+	//std::cout << "Enter another number if you want to exitAt any time you can click on the right top corner to exit" << std::endl;
+
+	std::cin >> restart;
+
+	if (restart == 1)
+	{
+			std::cout << "At any time you can click on the right top corner to exit" << std::endl << std::endl;
+			std::cout <<  std::endl << std::endl;
+
+	}
+	else
+	{
+		system("pause");
 	}
 }
