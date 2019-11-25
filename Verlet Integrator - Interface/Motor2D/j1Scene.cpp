@@ -23,7 +23,7 @@
 #include "ModuleFonts.h"
 #include "VerletIntegrator.h"
 
-object Ball;
+object cube;
 
 j1Scene::j1Scene() : j1Module()
 {
@@ -115,6 +115,22 @@ bool j1Scene::Update(float dt)
 			step++;
 			num_star = 0;
 			currentInput = 1;
+
+			// ENTER DATA
+			cube.setX(x0.count);
+			cube.setY(y0.count);
+			cube.setVX(vx0.count);
+			cube.setVY(vy0.count);
+			cube.setAX(ax0.count);
+			cube.setAY(ay0.count);
+			/*
+			cube.setL(L.count);
+			cube.setFX(fx0.count);
+			cube.setFY(fy0.count);
+			cube.setMu(mu.count);
+			cube.setCollision(collision.count);
+			cube.setT(time.count);*/
+			return true;
 		}
 		else if (App->input->GetKeyDown(SDLK_b))
 		{
@@ -1067,7 +1083,7 @@ bool j1Scene::Update(float dt)
 
 		if (App->input->GetKeyDown(SDLK_RETURN))
 		{
-			step = 1;
+			step += 2;
 		}
 		else if (App->input->GetKeyDown(SDLK_b))
 		{
@@ -1077,9 +1093,21 @@ bool j1Scene::Update(float dt)
 	else if (step == 5) // FINAL DATA
 	{
 		App->render->Blit(screen_5, 0, 0);
+
+		if (App->input->GetKeyDown(SDLK_RETURN))
+		{
+			step++;
+		}
 		if (App->input->GetKeyDown(SDLK_b))
 		{
-			step = 1;
+			step -= 2;
+		}
+	}
+	else if (step == 6)
+	{
+		if (App->input->GetKeyDown(SDLK_b))
+		{
+			step--;
 		}
 	}
 	return true;
