@@ -190,7 +190,7 @@ void object::enterData()
 	//coefficient of friction
 	int i = 0;
 	while (i == 0) {
-		std::cout << "Enter a value for the coefficient of friction(value should range between 0 and 1, otherwise it will be set to 0): ";
+		std::cout << "Enter a value for the coefficient of friction (value should range between 0 and 1, otherwise it will be set to 0): ";
 		std::cin >> CF;
 		std::cout << std::endl;
 		if (CF >= 0 && CF <= 1) {
