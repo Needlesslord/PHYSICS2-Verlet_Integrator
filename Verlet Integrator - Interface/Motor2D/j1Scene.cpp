@@ -209,17 +209,11 @@ bool j1Scene::Update(float dt)
 	else if (step == 5)
 	{
 		App->render->Blit(screen_5, 0, 0);
-
-		if (App->input->GetKeyDown(SDLK_RETURN))
-		{
-			step++;
-		}
-		else if (App->input->GetKeyDown(SDLK_b))
+		if (App->input->GetKeyDown(SDLK_b))
 		{
 			step = 1;
 		}
 	}
-	if (step > 5)step = 5;
 	return true;
 }
 
