@@ -53,8 +53,8 @@ bool j1Scene::Start()
 	screen_5 = App->tex->Load("textures/5.png");
 
 	star = App->tex->Load("textures/star.png");
-
 	ball_tex = App->tex->Load("textures/ball.png");
+	objTex = App->tex->Load("textures/Square.png");
 	font = App->fonts->Load("textures/Fonts_Numbers.png", "0123456789", 1);
 	step = 2;
 	num_star = 0;
@@ -1096,6 +1096,7 @@ bool j1Scene::Update(float dt)
 		if (App->input->GetKeyDown(SDLK_1))
 		{
 			first_time = true;
+			draw = true;
 			step++;
 		}
 		if (App->input->GetKeyDown(SDLK_RETURN))
@@ -1118,12 +1119,13 @@ bool j1Scene::Update(float dt)
 			first_time = false;
 		}
 
-		App->render->DrawQuad(quad, 255, 255, 255);
 		// Run integrator
+		//App->physics->Run();
 
 		if (App->input->GetKeyDown(SDLK_b))
 		{
 			step--;
+			draw = false;
 		}
 	}
 	return true;
@@ -1311,6 +1313,12 @@ bool j1Scene::CleanUp()
 	LOG("Freeing scene");
 	App->tex->UnLoad(screen_0);
 	App->tex->UnLoad(ball_tex);
+	App->tex->UnLoad(objTex);
 	App->fonts->UnLoad(font);
 	return true;
+}
+
+void j1Scene::Draw(float x, float y)
+{
+	App->render->Blit(objTex, x, y, &objRect);
 }

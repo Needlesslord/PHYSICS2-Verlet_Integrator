@@ -106,9 +106,10 @@ private:
 	//time
 	double dt;
 
-	//Texture
-	//SDL_Texture* objTex;
-	//SDL_Rect objRect = { 0, 0, 406, 406 };
+	//Drawing
+	bool draw = false;
+	SDL_Texture* objTex;
+	SDL_Rect objRect = { 0, 0, 406, 406 };
 };
 
 

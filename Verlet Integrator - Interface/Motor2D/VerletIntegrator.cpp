@@ -2,6 +2,7 @@
 #include "j1App.h"
 #include "Globals.h"
 #include "j1Render.h"
+#include "j1Scene.h"
 
 //Constructor
 VerletIntegrator::VerletIntegrator() : j1Module()
@@ -313,7 +314,10 @@ void object::update(double time, object _object, double CR)
 		}
 
 		//Drawing Object if it has to
-		//App->render->Blit(objTex, new_x, new_y, &objRect);
+		if (App->scene->draw)
+		{
+			App->scene->Draw(new_x, new_y);
+		}
 	}
 
 	Restart(); //Menu Restart al acabar la representacio
@@ -347,6 +351,7 @@ void object::Restart()		//Funcio per acabar la representacio
 	int restart;
 	double time;
 	object _object;
+	draw = false;
 
 	//Adaptar a la interface
 	std::cout << std::endl;
