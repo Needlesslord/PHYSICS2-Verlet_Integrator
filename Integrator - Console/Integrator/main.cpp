@@ -22,11 +22,11 @@ int main()
 
 	cube.enterData();
 
-	std::cout << "How many seconds will the simulation last? (must be larger that 0, otherwise it will be set to 1)";
+	std::cout << "How many seconds will the simulation last? (must be larger that 0, otherwise it will be set to 5) ";
 	std::cin >> time;
 	if (time <= 0)
 	{
-		time = 1;
+		time = 5;
 	}
 	std::cout << std::endl;
 
