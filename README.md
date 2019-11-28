@@ -172,25 +172,10 @@ To see further information on where we took our information on what formulas to 
 
 
 
-## Preview
-
-
-A sneak peak to our integrator featuring main debug functionality.
-
-_under construction_
-
-
-
-***
-
-
-
 ## Installation
 
 
-Download the .zip (which can be found in our Github Project -link below- in releases and in our github web page).
-
-Go to the folder "Integrator" and click "Integrator.exe"
+Go to our GitHub repository and download the .zip. Go To the folder "Integrator - console", open the solution and Debug it.
 
 Enjoy!
 
@@ -305,13 +290,11 @@ In each step, the user will receive instructions of what data or keys they shoul
 ## Content
 
 
-In this integrator you have two main functions:
+In this integrator you are shown a welcome message at first and a small tutorial. 
 
-**1)** You can test the integrator, in which case all the frames will be displayed on the screen after the input of the initial data.
+After that, you input the data and all the frames will be displayed on the screen afterwards.
 
-**2)** You can use the integrator, in which case you can see the final numeric data and/or a graphic representation of the data inputed before. 
-
-In the final results for both cases, it will also be displayed the results of calculating everything with the Newton's Laws.
+In the final results, it will also be displayed in case you want to the results of calculating everything with the Newton's Laws.
 
 
 
