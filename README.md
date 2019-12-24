@@ -263,7 +263,7 @@ Here you can go to the release page and download the different versions availabl
 Instructions can be found in this same web page or in the readme.md file included in the zip.
 
 
-[Releases](https://github.com/Needlesslord/Physics2theory/releases)
+[Releases](https://github.com/Needlesslord/PHYSICS2-Verlet_Integrator/releases)
 
 
 
@@ -318,11 +318,11 @@ The integrator has been made using C++, using SDL libraries.
 ## Links
 
 
-[Github](https://github.com/Needlesslord/Physics2theory): https://github.com/Needlesslord/Physics2theory
+[Github](https://github.com/Needlesslord/Physics2theory): https://github.com/Needlesslord/PHYSICS2-Verlet_Integrator
 
-[Releases of this integrator](https://github.com/Needlesslord/Physics2theory/releases): https://github.com/Needlesslord/Physics2theory/releases
+[Releases of this integrator](https://github.com/Needlesslord/PHYSICS2-Verlet_Integrator/releases): https://github.com/Needlesslord/Physics2theory/releases
 
-[Our web page](https://needlesslord.github.io/Physics2theory/): https://needlesslord.github.io/Physics2theory/
+[Our web page](https://needlesslord.github.io/Physics2theory/): https://needlesslord.github.io/PHYSICS2-Verlet_Integrator/
 
 
 
