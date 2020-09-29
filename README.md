@@ -322,7 +322,7 @@ The integrator has been made using C++, using SDL libraries.
 
 [Releases of this integrator](https://github.com/Needlesslord/PHYSICS2-Verlet_Integrator/releases): https://github.com/Needlesslord/Physics2theory/releases
 
-[Our web page](https://needlesslord.github.io/Physics2theory/): https://needlesslord.github.io/PHYSICS2-Verlet_Integrator/
+[Our web page](https://needlesslord.github.io/PHYSICS2-Verlet_Integrator/): https://needlesslord.github.io/PHYSICS2-Verlet_Integrator/
 
 
 
